@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="MealPlannerClient.App.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:pages="clr-namespace:MealPlannerClient.App.Pages"
+    Title="MealPlannerClient.App">
+
+    <ShellContent
+         Title="Inventory"
+         Icon="box.png"
+         ContentTemplate="{DataTemplate pages:InventoryPage}"
+         Route="inventory" />
+
+    <ShellContent
+        Title="MainPage"
+        ContentTemplate="{DataTemplate pages:Page2}"
+        Route="page2" />
+
+    <ShellContent
+        Title="Settings"
+        Icon="setting.png"
+        ContentTemplate="{DataTemplate pages:Settings}"
+        Route="settings" />
+</Shell>

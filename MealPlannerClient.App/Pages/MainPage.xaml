@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converters="clr-namespace:MealPlannerClient.App.Converters"
+             xmlns:local="clr-namespace:MealPlannerClient.App"
+             x:Class="MealPlannerClient.App.Pages.MainPage"
+             Title="Main Page"
+             BindingContext="{x:Static local:App.MainViewModel}">
+
+    <ContentPage.Resources>
+        <!-- Define a ControlTemplate -->
+        <converters:PageConverter x:Key="PageConverter" />
+
+        <ControlTemplate x:Key="MainLayoutTemplate">
+            <Grid RowDefinitions="Auto,*" ColumnDefinitions="Auto,*">
+                <!-- Header Section -->
+                <BoxView Grid.Row="0" Grid.ColumnSpan="2" HeightRequest="60" Color="Purple" />
+                <Label Grid.Row="0" Grid.Column="1" Text="HEADER" VerticalOptions="Center" HorizontalOptions="Center" TextColor="White" FontSize="24" />
+
+                <!-- Side Menu Section -->
+                <BoxView Grid.RowSpan="2" Grid.Row="1" Grid.Column="0" Color="Blue" WidthRequest="150" />
+                <StackLayout Grid.Row="1" Grid.Column="0" VerticalOptions="Center" Padding="10">
+                    <Button Text="Page 1" Command="{Binding ChangeContentCommand, Source={x:Static local:App.MainViewModel}}" CommandParameter="Page1"/>
+                    <Button Text="Page 2" Command="{Binding ChangeContentCommand, Source={x:Static local:App.MainViewModel}}" CommandParameter="Page2"/>
+                </StackLayout>
+
+                <!-- Content Section -->
+                <ContentPresenter Grid.Row="1" Grid.Column="1" Content="{Binding CurrentPage, Mode=TwoWay}" />
+            </Grid>
+        </ControlTemplate>
+
+    </ContentPage.Resources>
+
+    <ContentPage.ControlTemplate>
+        <StaticResource Key="MainLayoutTemplate" />
+    </ContentPage.ControlTemplate>
+</ContentPage>
