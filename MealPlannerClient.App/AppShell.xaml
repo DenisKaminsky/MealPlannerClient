@@ -13,7 +13,7 @@
          Route="inventory" />
 
     <ShellContent
-        Title="MainPage"
+        Title="My Recipes"
         Icon="recipe_black.png"
         ContentTemplate="{DataTemplate pages:RecipesPage}"
         Route="recipes" />
@@ -21,6 +21,6 @@
     <ShellContent
         Title="Settings"
         Icon="settings_black.png"
-        ContentTemplate="{DataTemplate pages:Settings}"
+        ContentTemplate="{DataTemplate pages:SettingsPage}"
         Route="settings" />
 </Shell>

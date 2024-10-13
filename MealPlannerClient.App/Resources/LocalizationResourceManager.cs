@@ -1,7 +1,8 @@
 ﻿using System.ComponentModel;
 using System.Globalization;
+using MealPlannerClient.App.Resources.Languages;
 
-namespace MealPlannerClient.App.Resources.Languages
+namespace MealPlannerClient.App.Resources
 {
     public class LocalizationResourceManager : INotifyPropertyChanged
     {

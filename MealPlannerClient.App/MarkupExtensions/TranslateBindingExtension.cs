@@ -1,4 +1,4 @@
-﻿using MealPlannerClient.App.Resources.Languages;
+﻿using MealPlannerClient.App.Resources;
 
 namespace MealPlannerClient.App.MarkupExtensions
 {

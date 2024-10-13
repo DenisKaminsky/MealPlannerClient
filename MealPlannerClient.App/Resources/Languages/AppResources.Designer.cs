@@ -61,20 +61,56 @@ namespace MealPlannerClient.App.Resources.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Bill.
+        ///   Looks up a localized string similar to Big.
         /// </summary>
-        internal static string BillLabel {
+        internal static string Settings_BigFont {
             get {
-                return ResourceManager.GetString("BillLabel", resourceCulture);
+                return ResourceManager.GetString("Settings_BigFont", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Tip.
+        ///   Looks up a localized string similar to Color Theme.
         /// </summary>
-        internal static string TipLabel {
+        internal static string Settings_ColorTheme {
             get {
-                return ResourceManager.GetString("TipLabel", resourceCulture);
+                return ResourceManager.GetString("Settings_ColorTheme", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Font Size.
+        /// </summary>
+        internal static string Settings_FontSize {
+            get {
+                return ResourceManager.GetString("Settings_FontSize", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Language.
+        /// </summary>
+        internal static string Settings_Language {
+            get {
+                return ResourceManager.GetString("Settings_Language", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Medium.
+        /// </summary>
+        internal static string Settings_MidFont {
+            get {
+                return ResourceManager.GetString("Settings_MidFont", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Small.
+        /// </summary>
+        internal static string Settings_SmallFont {
+            get {
+                return ResourceManager.GetString("Settings_SmallFont", resourceCulture);
             }
         }
     }

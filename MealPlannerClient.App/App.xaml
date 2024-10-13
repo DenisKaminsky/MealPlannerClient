@@ -8,6 +8,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
                 <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
+                <ResourceDictionary Source="Resources/Styles/MealPlannerStyles.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
             <ControlTemplate x:Key="MainLayoutTemplate">
@@ -36,7 +37,7 @@
                             HeightRequest="50"/>
 
                         <Button 
-                            Text="Recipes" 
+                            Text="My Recipes" 
                             ImageSource="recipe_white.png"
                             HeightRequest="50"
                             Command="{Binding NavigationItemClickedCommand, Source={x:Static app:App.MainViewModel}}" 
