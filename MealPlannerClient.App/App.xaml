@@ -2,6 +2,7 @@
 <Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:app="clr-namespace:MealPlannerClient.App"
+             xmlns:markupExtensions="using:MealPlannerClient.App.MarkupExtensions"
              x:Class="MealPlannerClient.App.App">
     <Application.Resources>
         <ResourceDictionary>
@@ -27,19 +28,17 @@
                     <BoxView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HeightRequest="3" Color="Black"/>
 
                     <!-- Side Menu Section -->
-                    <BoxView Grid.RowSpan="2" Grid.Row="2" Grid.Column="0" Color="Orange" WidthRequest="200" />
+                    <BoxView Grid.RowSpan="2" Grid.Row="2" Grid.Column="0" Color="Orange" WidthRequest="250" />
                     <StackLayout Grid.Row="2" Grid.Column="0" VerticalOptions="Start" Padding="10" Spacing="20">
                         <Button 
-                            Text="Inventory" 
+                            Text="{markupExtensions:TranslateBinding SideMenu_Inventory}"
                             Command="{Binding NavigationItemClickedCommand, Source={x:Static app:App.MainViewModel}}" 
                             CommandParameter="inventory"
-                            ImageSource="box_white.png"
-                            HeightRequest="50"/>
+                            ImageSource="box_white.png"/>
 
                         <Button 
-                            Text="My Recipes" 
+                            Text="{markupExtensions:TranslateBinding SideMenu_Recipes}"
                             ImageSource="recipe_white.png"
-                            HeightRequest="50"
                             Command="{Binding NavigationItemClickedCommand, Source={x:Static app:App.MainViewModel}}" 
                             CommandParameter="recipes"/>
                     </StackLayout>
@@ -52,11 +51,10 @@
                     <!-- Footer Section-->
                     <StackLayout Grid.Row="3" Grid.Column="0" VerticalOptions="Center" Padding="10">
                         <Button 
-                            Text="Settings" 
+                            Text="{markupExtensions:TranslateBinding SideMenu_Settings}"
                             Command="{Binding NavigationItemClickedCommand, Source={x:Static app:App.MainViewModel}}" 
                             CommandParameter="settings" 
-                            ImageSource="settings_white.png"
-                            HeightRequest="50"/>
+                            ImageSource="settings_white.png"/>
                     </StackLayout>
                 </Grid>
             </ControlTemplate>

@@ -135,4 +135,13 @@
   <data name="Settings_SmallFont" xml:space="preserve">
     <value>Маленький</value>
   </data>
+  <data name="SideMenu_Inventory" xml:space="preserve">
+    <value>Продукты</value>
+  </data>
+  <data name="SideMenu_Recipes" xml:space="preserve">
+    <value>Мои Рецепты</value>
+  </data>
+  <data name="SideMenu_Settings" xml:space="preserve">
+    <value>Настройки</value>
+  </data>
 </root>

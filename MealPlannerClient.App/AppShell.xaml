@@ -4,22 +4,24 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:pages="clr-namespace:MealPlannerClient.App.Pages"
-    Title="MealPlannerClient.App">
+    xmlns:markupExtensions="using:MealPlannerClient.App.MarkupExtensions"
+    Title="MyMealPlanner"
+    IconImageSource="logo.svg">
 
     <ShellContent
-         Title="Inventory"
+         Title="{markupExtensions:TranslateBinding SideMenu_Inventory}"
          Icon="box_black.png"
          ContentTemplate="{DataTemplate pages:InventoryPage}"
          Route="inventory" />
 
     <ShellContent
-        Title="My Recipes"
+        Title="{markupExtensions:TranslateBinding SideMenu_Recipes}"
         Icon="recipe_black.png"
         ContentTemplate="{DataTemplate pages:RecipesPage}"
         Route="recipes" />
 
     <ShellContent
-        Title="Settings"
+        Title="{markupExtensions:TranslateBinding SideMenu_Settings}"
         Icon="settings_black.png"
         ContentTemplate="{DataTemplate pages:SettingsPage}"
         Route="settings" />

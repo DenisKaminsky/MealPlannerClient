@@ -113,5 +113,32 @@ namespace MealPlannerClient.App.Resources.Languages {
                 return ResourceManager.GetString("Settings_SmallFont", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Inventory.
+        /// </summary>
+        internal static string SideMenu_Inventory {
+            get {
+                return ResourceManager.GetString("SideMenu_Inventory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to My Recipes.
+        /// </summary>
+        internal static string SideMenu_Recipes {
+            get {
+                return ResourceManager.GetString("SideMenu_Recipes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Settings.
+        /// </summary>
+        internal static string SideMenu_Settings {
+            get {
+                return ResourceManager.GetString("SideMenu_Settings", resourceCulture);
+            }
+        }
     }
 }

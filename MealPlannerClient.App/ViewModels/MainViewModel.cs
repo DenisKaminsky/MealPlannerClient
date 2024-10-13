@@ -6,7 +6,7 @@ namespace MealPlannerClient.App.ViewModels
     public partial class MainViewModel : ObservableObject
     {
         [ObservableProperty]
-        private string curentPage = string.Empty;
+        private string currentPage = string.Empty;
 
         public MainViewModel()
         {

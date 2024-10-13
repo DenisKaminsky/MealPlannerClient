@@ -94,7 +94,6 @@
 	  <None Remove="Resources\Images\font_big_white.png" />
 	  <None Remove="Resources\Images\font_mid_white.png" />
 	  <None Remove="Resources\Images\font_small_white.png" />
-	  <None Remove="Resources\Images\logo.svg" />
 	  <None Remove="Resources\Images\recipe_black.png" />
 	  <None Remove="Resources\Images\recipe_white.png" />
 	  <None Remove="Resources\Images\russia.png" />
@@ -179,7 +178,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<MauiIcon Include="Resources\AppIcon\logo.svg"/>
+		<MauiIcon Include="Resources\AppIcon\logo.svg" />
 	</ItemGroup>
 
 </Project>
