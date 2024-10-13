@@ -1,8 +1,8 @@
 namespace MealPlannerClient.App.Pages;
 
-public partial class Page2 : ContentPage
+public partial class RecipesPage : ContentPage
 {
-	public Page2()
+	public RecipesPage()
 	{
 		InitializeComponent();
 	}

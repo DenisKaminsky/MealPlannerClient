@@ -1,32 +1,22 @@
-﻿using System.Windows.Input;
-using CommunityToolkit.Mvvm.ComponentModel;
-using MealPlannerClient.App.Pages;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 
 namespace MealPlannerClient.App.ViewModels
 {
-    public class MainViewModel : ObservableObject
+    public partial class MainViewModel : ObservableObject
     {
-        private ContentPage _currentPage;
-        public ContentPage CurrentPage
-        {
-            get => _currentPage;
-            set => SetProperty(ref _currentPage, value);
-        }
-
-        public ICommand ChangeContentCommand { get; }
+        [ObservableProperty]
+        private string curentPage = string.Empty;
 
         public MainViewModel()
         {
-            ChangeContentCommand = new Command<string>(OnChangeContent);
-            CurrentPage = new InventoryPage();
         }
 
-        private void OnChangeContent(string page)
+        [RelayCommand]
+        private async Task NavigationItemClicked(string page)
         {
-            if (page == "Page1")
-                Shell.Current.GoToAsync("//page1");
-            else if (page == "Page2")
-                Shell.Current.GoToAsync("//page2");
+
+            await Shell.Current.GoToAsync($"//{page}");
         }
     }
 }

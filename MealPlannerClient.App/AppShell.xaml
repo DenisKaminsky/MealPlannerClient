@@ -14,8 +14,9 @@
 
     <ShellContent
         Title="MainPage"
-        ContentTemplate="{DataTemplate pages:Page2}"
-        Route="page2" />
+        Icon="recipe_book.png"
+        ContentTemplate="{DataTemplate pages:RecipesPage}"
+        Route="recipes" />
 
     <ShellContent
         Title="Settings"

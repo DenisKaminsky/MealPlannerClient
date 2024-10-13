@@ -1,7 +1,6 @@
 ﻿<?xml version = "1.0" encoding = "UTF-8" ?>
 <Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="using:MealPlannerClient.App"
              xmlns:app="clr-namespace:MealPlannerClient.App"
              x:Class="MealPlannerClient.App.App">
     <Application.Resources>
@@ -12,47 +11,48 @@
             </ResourceDictionary.MergedDictionaries>
 
             <ControlTemplate x:Key="MainLayoutTemplate">
-                <Grid RowDefinitions="Auto,*, Auto" ColumnDefinitions="Auto,*,Auto">
-                    <!-- Header Section -->
-                    <Border Grid.Row="0" Grid.ColumnSpan="2" Stroke="Black" StrokeThickness="5">
-                        <Grid>
-                            <BoxView HeightRequest="60" Color="Orange" />
-                            <Label Text="{TemplateBinding Title}" 
-                                   VerticalOptions="Center" 
-                                   HorizontalOptions="Center" 
-                                   TextColor="White" 
-                                   FontSize="24" />
-                        </Grid>
-                    </Border>
+                <Grid RowDefinitions="Auto,Auto,*,Auto" ColumnDefinitions="Auto,*, Auto">
 
+                    <!-- Header Section -->
+                    <BoxView Grid.Row="0" Grid.ColumnSpan="2" HeightRequest="60" Color="Orange" />
+                    <Label Grid.Row="0" Grid.Column="1"
+                           Text="{TemplateBinding Title}" 
+                           VerticalOptions="Center" 
+                           HorizontalOptions="Center" 
+                           TextColor="White"/>
+
+                    <!-- Delimiter -->
+                    <BoxView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HeightRequest="3" Color="Black"/>
 
                     <!-- Side Menu Section -->
-                    <BoxView Grid.RowSpan="2" Grid.Row="1" Grid.Column="0" Color="Orange" WidthRequest="200" />
-                    <StackLayout Grid.Row="1" Grid.Column="0" VerticalOptions="Start" Padding="10" Spacing="20">
+                    <BoxView Grid.RowSpan="2" Grid.Row="2" Grid.Column="0" Color="Orange" WidthRequest="200" />
+                    <StackLayout Grid.Row="2" Grid.Column="0" VerticalOptions="Start" Padding="10" Spacing="20">
                         <Button 
                             Text="Inventory" 
-                            Command="{Binding ChangeContentCommand, Source={x:Static app:App.MainViewModel}}" 
+                            Command="{Binding NavigationItemClickedCommand, Source={x:Static app:App.MainViewModel}}" 
                             CommandParameter="inventory"
                             ImageSource="box.png"
                             HeightRequest="50"/>
 
                         <Button 
                             Text="Page 2" 
-                            Command="{Binding ChangeContentCommand, Source={x:Static app:App.MainViewModel}}" 
-                            CommandParameter="Page2"/>
+                            ImageSource="recipe_book.png"
+                            HeightRequest="50"
+                            Command="{Binding NavigationItemClickedCommand, Source={x:Static app:App.MainViewModel}}" 
+                            CommandParameter="recipes"/>
                     </StackLayout>
 
 
                     <!-- Content Section-->
-                    <ContentPresenter Grid.Row="1" Grid.Column="1" Content="{Binding CurrentPage, Mode=TwoWay}" />
+                    <ContentPresenter Grid.Row="2" Grid.Column="1" VerticalOptions="Start" HorizontalOptions="Start"/>
 
 
                     <!-- Footer Section-->
-                    <StackLayout Grid.Row="2" Grid.Column="0" VerticalOptions="Center" Padding="10">
+                    <StackLayout Grid.Row="3" Grid.Column="0" VerticalOptions="Center" Padding="10">
                         <Button 
                             Text="Settings" 
-                            Command="{Binding ChangeContentCommand}" 
-                            CommandParameter="SettingsPage" 
+                            Command="{Binding NavigationItemClickedCommand, Source={x:Static app:App.MainViewModel}}" 
+                            CommandParameter="settings" 
                             ImageSource="setting.png"
                             HeightRequest="50"/>
                     </StackLayout>
