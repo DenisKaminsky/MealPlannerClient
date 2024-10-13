@@ -15,11 +15,12 @@
 
                     <!-- Header Section -->
                     <BoxView Grid.Row="0" Grid.ColumnSpan="2" HeightRequest="60" Color="Orange" />
-                    <Label Grid.Row="0" Grid.Column="1"
+                    <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
                            Text="{TemplateBinding Title}" 
                            VerticalOptions="Center" 
                            HorizontalOptions="Center" 
-                           TextColor="White"/>
+                           TextColor="White"
+                           FontSize="35"/>
 
                     <!-- Delimiter -->
                     <BoxView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HeightRequest="3" Color="Black"/>
@@ -31,12 +32,12 @@
                             Text="Inventory" 
                             Command="{Binding NavigationItemClickedCommand, Source={x:Static app:App.MainViewModel}}" 
                             CommandParameter="inventory"
-                            ImageSource="box.png"
+                            ImageSource="box_white.png"
                             HeightRequest="50"/>
 
                         <Button 
-                            Text="Page 2" 
-                            ImageSource="recipe_book.png"
+                            Text="Recipes" 
+                            ImageSource="recipe_white.png"
                             HeightRequest="50"
                             Command="{Binding NavigationItemClickedCommand, Source={x:Static app:App.MainViewModel}}" 
                             CommandParameter="recipes"/>
@@ -44,7 +45,7 @@
 
 
                     <!-- Content Section-->
-                    <ContentPresenter Grid.Row="2" Grid.Column="1" VerticalOptions="Start" HorizontalOptions="Start"/>
+                    <ContentPresenter Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
 
 
                     <!-- Footer Section-->
@@ -53,7 +54,7 @@
                             Text="Settings" 
                             Command="{Binding NavigationItemClickedCommand, Source={x:Static app:App.MainViewModel}}" 
                             CommandParameter="settings" 
-                            ImageSource="setting.png"
+                            ImageSource="settings_white.png"
                             HeightRequest="50"/>
                     </StackLayout>
                 </Grid>

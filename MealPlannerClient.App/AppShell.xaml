@@ -8,19 +8,19 @@
 
     <ShellContent
          Title="Inventory"
-         Icon="box.png"
+         Icon="box_black.png"
          ContentTemplate="{DataTemplate pages:InventoryPage}"
          Route="inventory" />
 
     <ShellContent
         Title="MainPage"
-        Icon="recipe_book.png"
+        Icon="recipe_black.png"
         ContentTemplate="{DataTemplate pages:RecipesPage}"
         Route="recipes" />
 
     <ShellContent
         Title="Settings"
-        Icon="setting.png"
+        Icon="settings_black.png"
         ContentTemplate="{DataTemplate pages:Settings}"
         Route="settings" />
 </Shell>

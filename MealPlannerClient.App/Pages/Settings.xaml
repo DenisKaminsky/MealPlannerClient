@@ -5,10 +5,87 @@
              Title="Settings"
              Shell.NavBarIsVisible="False"
              ControlTemplate="{StaticResource MainLayoutTemplate}">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
+    <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,*,Auto" ColumnDefinitions="3*,*" Padding="20" ColumnSpacing="20" RowSpacing="40" HorizontalOptions="Fill">
+
+        <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+            Text="Color Theme"
             VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+            HorizontalOptions="Start"
+            FontSize="35"/>
+        <HorizontalStackLayout Spacing="20" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+            <Button 
+                Text="Settings" 
+                ImageSource="setting.png"
+                HeightRequest="50"/>
+
+            <Button 
+                Text="Settings" 
+                ImageSource="setting.png"
+                HeightRequest="50"/>
+
+            <Button 
+                Text="Settings" 
+                ImageSource="setting.png"
+                HeightRequest="50"/>
+        </HorizontalStackLayout>
+
+
+        <BoxView HeightRequest="3" Color="Orange" HorizontalOptions="FillAndExpand" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"/>
+
+
+        <Label Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"
+               Text="Font Size"
+               VerticalOptions="Center" 
+               HorizontalOptions="Start"
+               FontSize="35"/>
+        <HorizontalStackLayout Spacing="20" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2">
+            <Button 
+                Text="Small" 
+                ImageSource="font_small_white.png"
+                HeightRequest="50"/>
+
+            <Button 
+                Text="Medium" 
+                ImageSource="font_mid_white.png"
+                HeightRequest="50"/>
+
+            <Button 
+                Text="Big" 
+                ImageSource="font_big_white.png"
+                HeightRequest="50"/>
+        </HorizontalStackLayout>
+
+
+        <BoxView HeightRequest="3" Color="Orange" HorizontalOptions="FillAndExpand" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2"/>
+
+
+        <Label Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2"
+               Text="Language"
+               VerticalOptions="Center" 
+               HorizontalOptions="Start"
+               FontSize="35"/>
+        <HorizontalStackLayout Spacing="20" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="2" VerticalOptions="Start">
+            <Button 
+                Text="English" 
+                ImageSource="usa.png"
+                HeightRequest="50"/>
+
+            <Button 
+                Text="Русский" 
+                ImageSource="russia.png"
+                HeightRequest="50"/>
+        </HorizontalStackLayout>
+
+        <HorizontalStackLayout Spacing="20" Grid.Row="10" Grid.Column="1" HorizontalOptions="End">
+            <Button 
+                Text="Cancel"
+                HeightRequest="50"/>
+
+            <Button 
+                Text="Save" 
+                ImageSource="save_white.png"
+                HeightRequest="50"/>
+        </HorizontalStackLayout>
+
+    </Grid>
 </ContentPage>

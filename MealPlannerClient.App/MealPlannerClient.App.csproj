@@ -58,10 +58,19 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <None Remove="Resources\Images\box.png" />
-	  <None Remove="Resources\Images\fridge.png" />
-	  <None Remove="Resources\Images\recipe_book.png" />
-	  <None Remove="Resources\Images\setting.png" />
+	  <None Remove="Resources\Images\box_black.png" />
+	  <None Remove="Resources\Images\box_white.png" />
+	  <None Remove="Resources\Images\font_big_white.png" />
+	  <None Remove="Resources\Images\font_mid_white.png" />
+	  <None Remove="Resources\Images\font_small_white.png" />
+	  <None Remove="Resources\Images\recipe_black.png" />
+	  <None Remove="Resources\Images\recipe_white.png" />
+	  <None Remove="Resources\Images\russia.png" />
+	  <None Remove="Resources\Images\save_black.png" />
+	  <None Remove="Resources\Images\save_white.png" />
+	  <None Remove="Resources\Images\settings_black.png" />
+	  <None Remove="Resources\Images\settings_white.png" />
+	  <None Remove="Resources\Images\usa.png" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -73,7 +82,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="Pages\DenisPage.xaml.cs">
+	  <Compile Update="Pages\Test\DenisPage.xaml.cs">
 	    <DependentUpon>DenisPage.xaml</DependentUpon>
 	  </Compile>
 	  <Compile Update="Pages\MainPage.xaml.cs">
@@ -88,7 +97,7 @@
 	  <Compile Update="Pages\Settings.xaml.cs">
 	    <DependentUpon>Settings.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="Pages\TestPage.xaml.cs">
+	  <Compile Update="Pages\Test\TestPage.xaml.cs">
 	    <DependentUpon>TestPage.xaml</DependentUpon>
 	  </Compile>
 	  <Compile Update="Resources\Languages\AppResources.Designer.cs">
@@ -121,10 +130,10 @@
 	  <MauiXaml Update="Pages\RecipesPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\TestPage.xaml">
+	  <MauiXaml Update="Pages\Test\TestPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\TestPAgeGrid.xaml">
+	  <MauiXaml Update="Pages\Test\TestPAgeGrid.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Resources\Styles\MealPlannerStyles.xaml">
