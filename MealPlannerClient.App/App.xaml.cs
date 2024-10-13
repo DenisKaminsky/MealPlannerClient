@@ -1,6 +1,6 @@
 ﻿using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Maui.Core;
-using MealPlannerClient.App.UserPreferences;
+using MealPlannerClient.App.Helpers;
 
 namespace MealPlannerClient.App
 {
@@ -12,10 +12,11 @@ namespace MealPlannerClient.App
         {
             InitializeComponent();
 
-            PreferencesManager.SaveUIPreferencesToResources();
+            //initialize resources bases on saved preferences
+            LanguagePreferencesManager.Initialize();
+            FontPreferencesManager.Initialize();
 
             MainPage = new AppShell();
-
             MainViewModel = new ViewModels.MainViewModel();
         }
 

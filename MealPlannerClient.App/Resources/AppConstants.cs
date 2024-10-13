@@ -1,13 +1,27 @@
-﻿namespace MealPlannerClient.App.Resources
+﻿using MealPlannerClient.App.Enums;
+
+namespace MealPlannerClient.App.Resources
 {
     public static class AppConstants
     {
+        public static readonly FontSize FontSizeDefault = FontSize.Medium;
+
         #region Button Font Size
         public static readonly double ButtonFontSizeSmall = 10;
         public static readonly double ButtonFontSizeMid = 15;
         public static readonly double ButtonFontSizeBig = 20;
-        
-        public static double ButtonFontSizeDefault = ButtonFontSizeMid;
+        #endregion
+
+        #region Label Font Size
+        public static readonly double LabelFontSizeSmall = 17;
+        public static readonly double LabelFontSizeMid = 23;
+        public static readonly double LabelFontSizeBig = 30;
+        #endregion
+
+        #region Header Title Font Size
+        public static readonly double HeaderTitleFontSizeSmall = 20;
+        public static readonly double HeaderTitleFontSizeMid = 30;
+        public static readonly double HeaderTitleFontSizeBig = 40;
         #endregion
 
         #region Language

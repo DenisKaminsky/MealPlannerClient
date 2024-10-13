@@ -6,7 +6,7 @@
              xmlns:markupExtensions="using:MealPlannerClient.App.MarkupExtensions"
              x:Class="MealPlannerClient.App.Pages.SettingsPage"
              x:DataType="viewmodels:SettingsPageViewModel"
-             Title="Settings"
+             Title="{markupExtensions:TranslateBinding SideMenu_Settings}"
              Shell.NavBarIsVisible="False"
              ControlTemplate="{StaticResource MainLayoutTemplate}">
     <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto" ColumnDefinitions="3*,*" Padding="20" ColumnSpacing="20" RowSpacing="40" HorizontalOptions="Fill">
@@ -14,8 +14,7 @@
         <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
                Text="{markupExtensions:TranslateBinding Settings_ColorTheme}" 
                 VerticalOptions="Center" 
-                HorizontalOptions="Start"
-                FontSize="35"/>
+                HorizontalOptions="Start"/>
         <HorizontalStackLayout Spacing="20" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
             <Button 
                 Text="Settings" 
@@ -38,8 +37,7 @@
         <Label Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"
                Text="{markupExtensions:TranslateBinding Settings_FontSize}" 
                VerticalOptions="Center" 
-               HorizontalOptions="Start"
-               FontSize="35"/>
+               HorizontalOptions="Start"/>
         <HorizontalStackLayout Spacing="20" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2">
             <Button 
                 Text="{markupExtensions:TranslateBinding Settings_SmallFont}" 
@@ -67,8 +65,7 @@
         <Label Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2"
                Text="{markupExtensions:TranslateBinding Settings_Language}" 
                VerticalOptions="Center" 
-               HorizontalOptions="Start"
-               FontSize="35"/>
+               HorizontalOptions="Start"/>
         <HorizontalStackLayout Spacing="20" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="2" VerticalOptions="Start">
             <Button 
                 Text="US English" 

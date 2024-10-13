@@ -7,9 +7,7 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
-                <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
-                <ResourceDictionary Source="Resources/Styles/MealPlannerStyles.xaml" />
+                <ResourceDictionary Source="Resources/Styles/MealPlannerStylesBase.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
             <ControlTemplate x:Key="MainLayoutTemplate">
@@ -22,7 +20,7 @@
                            VerticalOptions="Center" 
                            HorizontalOptions="Center" 
                            TextColor="White"
-                           FontSize="35"/>
+                           FontSize="{DynamicResource HeaderTitleFontSize}"/>
 
                     <!-- Delimiter -->
                     <BoxView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HeightRequest="3" Color="Black"/>

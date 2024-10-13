@@ -1,7 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using MealPlannerClient.App.Resources;
-using MealPlannerClient.App.UserPreferences;
+using MealPlannerClient.App.Enums;
+using MealPlannerClient.App.Helpers;
 
 namespace MealPlannerClient.App.ViewModels
 {
@@ -10,31 +10,31 @@ namespace MealPlannerClient.App.ViewModels
         [RelayCommand]
         public void SetSmallFontSize()
         {
-            PreferencesManager.UpdateFontSize(AppConstants.ButtonFontSizeSmall);
+            FontPreferencesManager.SetFontSize(FontSize.Small);
         }
 
         [RelayCommand]
         public void SetMidFontSize()
         {
-            PreferencesManager.UpdateFontSize(AppConstants.ButtonFontSizeMid);
+            FontPreferencesManager.SetFontSize(FontSize.Medium);
         }
 
         [RelayCommand]
         public void SetBigFontSize()
         {
-            PreferencesManager.UpdateFontSize(AppConstants.ButtonFontSizeBig);
+            FontPreferencesManager.SetFontSize(FontSize.Big);
         }
 
         [RelayCommand]
         public void SetUSEnglish()
         {
-            PreferencesManager.SetUSEnglishLanguage();
+            LanguagePreferencesManager.SetUSEnglishLanguage();
         }
 
         [RelayCommand]
         public void SetRussian()
         {
-            PreferencesManager.SetRussianLanguage();
+            LanguagePreferencesManager.SetRussianLanguage();
         }
     }
 }
