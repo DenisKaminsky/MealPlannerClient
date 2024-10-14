@@ -22,6 +22,9 @@ namespace MealPlannerClient.App
             builder.Services.AddTransient<SettingsPageViewModel>();
             builder.Services.AddTransient<SettingsPage>();
 
+            builder.Services.AddTransient<InventoryPageViewModel>();
+            builder.Services.AddTransient<InventoryPage>();
+
 #if DEBUG
             builder.Logging.AddDebug();
 #endif

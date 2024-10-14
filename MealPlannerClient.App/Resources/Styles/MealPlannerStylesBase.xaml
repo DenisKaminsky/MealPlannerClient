@@ -449,16 +449,10 @@
                             <Setter Property="BackgroundColor" Value="{DynamicResource ButtonDisabledColor}" />
                         </VisualState.Setters>
                     </VisualState>
-                    <VisualState x:Name="Pressed">
-                        <VisualState.Setters>
-                            <Setter Property="BackgroundColor"
-                                    Value="{DynamicResource ButtonClickColor}" />
-                        </VisualState.Setters>
-                    </VisualState>
                     <VisualState x:Name="PointerOver">
                         <VisualState.Setters>
-                            <Setter Property="BackgroundColor"
-                                    Value="{DynamicResource ButtonHoverColor}" />
+                            <Setter Property="Opacity"
+                                    Value="0.8" />
                         </VisualState.Setters>
                     </VisualState>
                 </VisualStateGroup>
@@ -480,16 +474,10 @@
                             <Setter Property="BackgroundColor" Value="{DynamicResource MenuButtonDisabledColor}" />
                         </VisualState.Setters>
                     </VisualState>
-                    <VisualState x:Name="Pressed">
-                        <VisualState.Setters>
-                            <Setter Property="BackgroundColor"
-                                    Value="{DynamicResource MenuButtonClickColor}" />
-                        </VisualState.Setters>
-                    </VisualState>
                     <VisualState x:Name="PointerOver">
                         <VisualState.Setters>
-                            <Setter Property="BackgroundColor"
-                                    Value="{DynamicResource MenuButtonHoverColor}" />
+                            <Setter Property="Opacity"
+                                    Value="0.8" />
                         </VisualState.Setters>
                     </VisualState>
                 </VisualStateGroup>

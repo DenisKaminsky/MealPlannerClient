@@ -2,13 +2,92 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:markupExtensions="clr-namespace:MealPlannerClient.App.MarkupExtensions"
+             xmlns:viewModels="clr-namespace:MealPlannerClient.App.ViewModels"
+             xmlns:models="clr-namespace:MealPlannerClient.App.Models"
+             xmlns:converters="clr-namespace:MealPlannerClient.App.Converters"
              x:Class="MealPlannerClient.App.Pages.InventoryPage"
+             x:DataType="viewModels:InventoryPageViewModel"
              Shell.NavBarIsVisible="False"
              Title="{markupExtensions:TranslateBinding SideMenu_Inventory}"
              ControlTemplate="{StaticResource MainLayoutTemplate}">
 
-    <VerticalStackLayout>
-        <Label Text="Page 1 Content" FontSize="44" />
-    </VerticalStackLayout>
+    <ContentPage.Resources>
+        <converters:InverseBooleanConverter x:Key="InverseBooleanConverter" />
+        <converters:MeasurementUnitToMaxValueConverter x:Key="MeasurementUnitToMaxValueConverter" />
+        <converters:MeasurementUnitToIncrementConverter x:Key="MeasurementUnitToIncrementConverter" />
+    </ContentPage.Resources>
+
+    <ScrollView>
+        <Grid RowDefinitions="Auto,Auto,Auto" ColumnDefinitions="*">
+            <Label Grid.Row="0" Grid.Column="0"
+                Text="Your inventory is empty" 
+                FontAttributes="Bold" 
+                HorizontalOptions="Start"
+                HorizontalTextAlignment="Center" 
+                VerticalOptions="Center" 
+                IsVisible="{Binding IsPageEmpty}"/>
+
+            <Label Grid.Row="0" Grid.Column="0"
+                   Text="My Products" 
+                   FontAttributes="Bold" 
+                   HorizontalOptions="Start"
+                   HorizontalTextAlignment="Center" 
+                   VerticalOptions="Center" 
+                   IsVisible="{Binding IsPageEmpty, Converter={StaticResource InverseBooleanConverter}}"/>
+
+            <CollectionView Grid.Row="1" Grid.Column="0"
+                    HorizontalOptions="Start"
+                    ItemsSource="{Binding MyProducts, Mode=TwoWay}" 
+                    SelectionMode="None" 
+                    IsVisible="{Binding IsPageEmpty, Converter={StaticResource InverseBooleanConverter}}">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout 
+                         Orientation="Vertical"
+                         Span="4"
+                         HorizontalItemSpacing="5"
+                         VerticalItemSpacing="10"
+                    />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:Product">
+                        <Border Stroke="{DynamicResource BorderColor}" StrokeThickness="1" StrokeShape="RoundRectangle 5,5,5,5" Padding="10,0,10,5" >
+                            <VerticalStackLayout>
+                                <Label
+                                       FontSize="20"
+                                       Text="{Binding ProductName}"/>
+
+                                <Label 
+                                       FontSize="15"
+                                       Text="{Binding CategoryName}"/>
+
+                                <HorizontalStackLayout>
+                                    <Border Stroke="{DynamicResource BorderColor}" StrokeThickness="1" StrokeShape="RoundRectangle 5,5,5,5" WidthRequest="250">
+                                        <Entry 
+                                            Keyboard="Numeric"
+                                            Placeholder="Enter a number" 
+                                            VerticalTextAlignment="Center"
+                                            BackgroundColor="{DynamicResource ContentAreaBackgroundColor}"
+                                            Text="{Binding Quantity, Mode=TwoWay}"/>
+                                    </Border>
+                                    <Stepper 
+                                        Value="{Binding Quantity, Mode=TwoWay}"
+                                        Minimum="0"
+                                        Maximum="1000000"
+                                        Increment="{Binding ProductUnitOfMeasurement, Converter={StaticResource MeasurementUnitToIncrementConverter}}"/>
+                                </HorizontalStackLayout>
+                            </VerticalStackLayout>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
+
+            <HorizontalStackLayout Grid.Row="2" Grid.Column="0">
+                <Button Text="Add New" Command="{Binding AddNewItemCommand}"/>
+                <Button Text="Remove Last" Command="{Binding RemoveLastItemCommand}"/>
+                <Button Text="Clear" Command="{Binding ClearListCommand}"/>
+            </HorizontalStackLayout>
+        </Grid>
+    </ScrollView>
 
 </ContentPage>

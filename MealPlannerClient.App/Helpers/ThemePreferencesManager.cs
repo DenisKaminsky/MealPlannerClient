@@ -7,7 +7,9 @@ namespace MealPlannerClient.App.Helpers
     public static class ThemePreferencesManager
     {
         private const string PREFERENCE_KEY = "AppTheme";
-        
+
+        private static ResourceDictionary MealPlannerStylesBase = new MealPlannerStylesBase();
+
         public static void Initialize()
         {
             var loadedFontSize = LoadTheme();
@@ -32,7 +34,7 @@ namespace MealPlannerClient.App.Helpers
                 //Add new theme
                 mergedDictionaries.Add(newTheme);
                 //Add base styles
-                mergedDictionaries.Add(new MealPlannerStylesBase());
+                mergedDictionaries.Add(MealPlannerStylesBase);
             }
 
             Preferences.Set(PREFERENCE_KEY, theme.ToString());
