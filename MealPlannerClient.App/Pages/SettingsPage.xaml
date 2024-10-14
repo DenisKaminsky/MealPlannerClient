@@ -4,6 +4,7 @@
              xmlns:viewmodels="clr-namespace:MealPlannerClient.App.ViewModels"
              xmlns:resources="clr-namespace:MealPlannerClient.App.Resources"
              xmlns:markupExtensions="clr-namespace:MealPlannerClient.App.MarkupExtensions"
+             xmlns:enums="clr-namespace:MealPlannerClient.App.Enums"
              x:Class="MealPlannerClient.App.Pages.SettingsPage"
              x:DataType="viewmodels:SettingsPageViewModel"
              Title="{markupExtensions:TranslateBinding SideMenu_Settings}"
@@ -23,7 +24,7 @@
                     <BoxView Grid.Column="1" Color="White" />
                     <BoxView Grid.Column="2" Color="Black" />
                     <Grid.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="OnGridTapped" />
+                        <TapGestureRecognizer Command="{Binding SetThemeCommand}" CommandParameter="{x:Static enums:CustomTheme.Main}"/>
                     </Grid.GestureRecognizers>
                 </Grid>
             </Border>
@@ -33,7 +34,7 @@
                     <BoxView Grid.Column="0" Color="Navy" />
                     <BoxView Grid.Column="1" Color="White" />
                     <Grid.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="OnGridTapped" />
+                        <TapGestureRecognizer Command="{Binding SetThemeCommand}" CommandParameter="{x:Static enums:CustomTheme.Navy}"/>
                     </Grid.GestureRecognizers>
                 </Grid>
             </Border>
@@ -44,7 +45,7 @@
                     <BoxView Grid.Column="1" Color="Black" />
                     <BoxView Grid.Column="2" Color="Green" />
                     <Grid.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="OnGridTapped" />
+                        <TapGestureRecognizer Command="{Binding SetThemeCommand}" CommandParameter="{x:Static enums:CustomTheme.Hacker}"/>
                     </Grid.GestureRecognizers>
                 </Grid>
             </Border>
@@ -55,7 +56,7 @@
                     <BoxView Grid.Column="1" Color="Black" />
                     <BoxView Grid.Column="2" Color="White" />
                     <Grid.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="OnGridTapped" />
+                        <TapGestureRecognizer Command="{Binding SetThemeCommand}" CommandParameter="{x:Static enums:CustomTheme.Danger}"/>
                     </Grid.GestureRecognizers>
                 </Grid>
             </Border>
@@ -75,19 +76,19 @@
                 Text="{markupExtensions:TranslateBinding Settings_SmallFont}" 
                 ImageSource="font_small_white.png"
                 FontSize="{x:Static Member=resources:AppConstants.ButtonFontSizeSmall}"
-                Command="{Binding SetSmallFontSizeCommand}"/>
+                Command="{Binding SetFontSizeCommand}" CommandParameter="{x:Static enums:FontSize.Small}"/>
 
             <Button 
                 Text="{markupExtensions:TranslateBinding Settings_MidFont}" 
                 ImageSource="font_mid_white.png"
                 FontSize="{x:Static Member=resources:AppConstants.ButtonFontSizeMid}"
-                Command="{Binding SetMidFontSizeCommand}"/>
+                Command="{Binding SetFontSizeCommand}" CommandParameter="{x:Static enums:FontSize.Medium}"/>
 
             <Button 
                 Text="{markupExtensions:TranslateBinding Settings_BigFont}" 
                 ImageSource="font_big_white.png"
                 FontSize="{x:Static Member=resources:AppConstants.ButtonFontSizeBig}"
-                Command="{Binding SetBigFontSizeCommand}"/>
+                Command="{Binding SetFontSizeCommand}" CommandParameter="{x:Static enums:FontSize.Big}"/>
         </HorizontalStackLayout>
 
 

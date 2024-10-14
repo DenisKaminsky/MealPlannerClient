@@ -2,27 +2,22 @@
 using CommunityToolkit.Mvvm.Input;
 using MealPlannerClient.App.Enums;
 using MealPlannerClient.App.Helpers;
+using FontSize = MealPlannerClient.App.Enums.FontSize;
 
 namespace MealPlannerClient.App.ViewModels
 {
     public partial class SettingsPageViewModel: ObservableObject
     {
         [RelayCommand]
-        public void SetSmallFontSize()
+        public void SetTheme(CustomTheme theme)
         {
-            FontPreferencesManager.SetFontSize(FontSize.Small);
+            LanguagePreferencesManager.SetRussianLanguage();
         }
 
         [RelayCommand]
-        public void SetMidFontSize()
+        public void SetFontSize(FontSize fontSize)
         {
-            FontPreferencesManager.SetFontSize(FontSize.Medium);
-        }
-
-        [RelayCommand]
-        public void SetBigFontSize()
-        {
-            FontPreferencesManager.SetFontSize(FontSize.Big);
+            FontPreferencesManager.SetFontSize(fontSize);
         }
 
         [RelayCommand]

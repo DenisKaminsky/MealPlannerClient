@@ -438,8 +438,8 @@
         <Setter Property="MinimumWidthRequest" Value="44"/>
         <Setter Property="HeightRequest" Value="50"/>
         <Setter Property="WidthRequest" Value="230"/>
-        <Setter Property="BorderColor" Value="Green"/>
-        <Setter Property="BorderWidth" Value="1"/>
+        <Setter Property="BorderColor" Value="{DynamicResource BorderColor}"/>
+        <Setter Property="BorderWidth" Value="2"/>
         <Setter Property="VisualStateManager.VisualStateGroups">
             <VisualStateGroupList>
                 <VisualStateGroup x:Name="CommonStates">

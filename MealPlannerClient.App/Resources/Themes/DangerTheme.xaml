@@ -2,5 +2,29 @@
 <ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MealPlannerClient.App.Resources.Themes.DangerTheme">
+    <Color x:Key="HeaderColor">Black</Color>
+    <Color x:Key="MenuBackgroundColor">OrangeRed</Color>
 
+    <Color x:Key="MenuDelimiterColor">Black</Color>
+    <Color x:Key="DelimiterColor">OrangeRed</Color>
+
+    <Color x:Key="MenuButtonColor">Black</Color>
+    <Color x:Key="MenuButtonTextColor">White</Color>
+    <Color x:Key="MenuButtonDisabledColor">#C8C8C8</Color>
+    <Color x:Key="MenuButtonHoverColor">#212121</Color>
+    <Color x:Key="MenuButtonClickColor">#404040</Color>
+
+    <Color x:Key="ButtonColor">OrangeRed</Color>
+    <Color x:Key="ButtonTextColor">Black</Color>
+    <Color x:Key="ButtonDisabledColor">#C8C8C8</Color>
+    <Color x:Key="ButtonHoverColor">Coral</Color>
+    <Color x:Key="ButtonClickColor">Black</Color>
+
+    <Color x:Key="ContentAreaBackgroundColor">White</Color>
+
+    <Color x:Key="LabelColor">OrangeRed</Color>
+    <Color x:Key="LabelDisabledColor">#ACACAC</Color>
+    <Color x:Key="HeaderLabelColor">OrangeRed</Color>
+
+    <Color x:Key="BorderColor">OrangeRed</Color>
 </ResourceDictionary>

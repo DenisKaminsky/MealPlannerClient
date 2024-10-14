@@ -13,7 +13,7 @@
     <Color x:Key="MenuButtonTextColor">Green</Color>
     <Color x:Key="MenuButtonDisabledColor">#C8C8C8</Color>
     <Color x:Key="MenuButtonHoverColor">#212121</Color>
-    <Color x:Key="MenuButtonClickColor">#404040</Color>
+    <Color x:Key="MenuButtonClickColor">Green</Color>
 
     <Color x:Key="ButtonColor">Black</Color>
     <Color x:Key="ButtonTextColor">Green</Color>
