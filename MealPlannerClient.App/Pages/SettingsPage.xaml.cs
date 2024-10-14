@@ -10,4 +10,9 @@ public partial class SettingsPage : ContentPage
 
         BindingContext = settingsPageViewModel;
     }
+
+    private void OnGridTapped(object? sender, TappedEventArgs e)
+    {
+        var a = 1;
+    }
 }

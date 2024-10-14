@@ -1,5 +1,4 @@
 ﻿using MealPlannerClient.App.Resources;
-using MealPlannerClient.App.Enums;
 
 namespace MealPlannerClient.App.Helpers
 {
@@ -13,21 +12,21 @@ namespace MealPlannerClient.App.Helpers
 
         public static void Initialize()
         {
-            var fontSize = LoadFontSize();
-            SetFontSize(fontSize);
+            var loadedFontSize = LoadFontSize();
+            SetFontSize(loadedFontSize);
         }
 
-        public static void SetFontSize(FontSize fontSize)
+        public static void SetFontSize(Enums.FontSize fontSize)
         {
             switch (fontSize)
             {
-                case FontSize.Small:
+                case Enums.FontSize.Small:
                     SetSmallFontSize();
                     break;
-                case FontSize.Medium:
+                case Enums.FontSize.Medium:
                     SetMediumFontSize();
                     break;
-                case FontSize.Big:
+                case Enums.FontSize.Big:
                     SetBigFontSize();
                     break;
                 default:
@@ -64,12 +63,12 @@ namespace MealPlannerClient.App.Helpers
         }
 
 
-        private static FontSize LoadFontSize()
+        private static Enums.FontSize LoadFontSize()
         {
             var defaultValue = AppConstants.FontSizeDefault;
 
             var savedValue = Preferences.Get(PREFERENCE_KEY, defaultValue.ToString());
-            if (!Enum.TryParse(savedValue, out FontSize result))
+            if (!Enum.TryParse(savedValue, out Enums.FontSize result))
             {
                 result = defaultValue;
             }

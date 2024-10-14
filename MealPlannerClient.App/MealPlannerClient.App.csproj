@@ -94,6 +94,7 @@
 	  <None Remove="Resources\Images\font_big_white.png" />
 	  <None Remove="Resources\Images\font_mid_white.png" />
 	  <None Remove="Resources\Images\font_small_white.png" />
+	  <None Remove="Resources\Images\header_logo.svg" />
 	  <None Remove="Resources\Images\recipe_black.png" />
 	  <None Remove="Resources\Images\recipe_white.png" />
 	  <None Remove="Resources\Images\russia.png" />
@@ -162,6 +163,18 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Resources\Styles\MealPlannerStylesBase.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Resources\Themes\DangerTheme.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Resources\Themes\HackerTheme.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Resources\Themes\MainTheme.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Resources\Themes\NavyTheme.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

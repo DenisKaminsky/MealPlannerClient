@@ -420,8 +420,8 @@
 
     <!-- Button -->
     <Style x:Key="BaseButtonStyle" TargetType="Button">
-        <Setter Property="TextColor" Value="White" />
-        <Setter Property="BackgroundColor" Value="{StaticResource Primary}"/>
+        <Setter Property="TextColor" Value="{DynamicResource ButtonTextColor}" />
+        <Setter Property="BackgroundColor" Value="{DynamicResource ButtonColor}"/>
         <Setter Property="FontFamily" Value="OpenSansRegular"/>
         <Setter Property="FontSize" Value="{DynamicResource ButtonFontSize}"/>
         <Setter Property="BorderWidth" Value="0"/>
@@ -437,21 +437,62 @@
                     <VisualState x:Name="Normal" />
                     <VisualState x:Name="Disabled">
                         <VisualState.Setters>
-                            <Setter Property="TextColor" Value="{StaticResource Gray950}" />
-                            <Setter Property="BackgroundColor" Value="{StaticResource Gray200}" />
+                            <Setter Property="BackgroundColor" Value="{DynamicResource ButtonDisabledColor}" />
                         </VisualState.Setters>
                     </VisualState>
-                    <VisualState x:Name="PointerOver" />
+                    <VisualState x:Name="Pressed">
+                        <VisualState.Setters>
+                            <Setter Property="BackgroundColor"
+                                    Value="{DynamicResource ButtonClickColor}" />
+                        </VisualState.Setters>
+                    </VisualState>
+                    <VisualState x:Name="PointerOver">
+                        <VisualState.Setters>
+                            <Setter Property="BackgroundColor"
+                                    Value="{DynamicResource ButtonHoverColor}" />
+                        </VisualState.Setters>
+                    </VisualState>
                 </VisualStateGroup>
             </VisualStateGroupList>
         </Setter>
     </Style>
 
-    <Style TargetType="Button" BasedOn="{StaticResource BaseButtonStyle}"></Style>
+    <Style TargetType="Button" BasedOn="{StaticResource BaseButtonStyle}" />
+
+    <Style TargetType="Button" BasedOn="{StaticResource BaseButtonStyle}" x:Key="SideMenuButtonStyle">
+        <Setter Property="TextColor" Value="{DynamicResource MenuButtonTextColor}" />
+        <Setter Property="BackgroundColor" Value="{DynamicResource MenuButtonColor}"/>
+        <Setter Property="VisualStateManager.VisualStateGroups">
+            <VisualStateGroupList>
+                <VisualStateGroup x:Name="CommonStates">
+                    <VisualState x:Name="Normal" />
+                    <VisualState x:Name="Disabled">
+                        <VisualState.Setters>
+                            <Setter Property="BackgroundColor" Value="{DynamicResource MenuButtonDisabledColor}" />
+                        </VisualState.Setters>
+                    </VisualState>
+                    <VisualState x:Name="Pressed">
+                        <VisualState.Setters>
+                            <Setter Property="BackgroundColor"
+                                    Value="{DynamicResource MenuButtonClickColor}" />
+                        </VisualState.Setters>
+                    </VisualState>
+                    <VisualState x:Name="PointerOver">
+                        <VisualState.Setters>
+                            <Setter Property="BackgroundColor"
+                                    Value="{DynamicResource MenuButtonHoverColor}" />
+                        </VisualState.Setters>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateGroupList>
+        </Setter>
+    </Style>
+
+
 
     <!-- Label -->
-    <Style TargetType="Label">
-        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}" />
+    <Style TargetType="Label" x:Key="BaseLabelStyle">
+        <Setter Property="TextColor" Value="{DynamicResource LabelColor}" />
         <Setter Property="BackgroundColor" Value="Transparent" />
         <Setter Property="FontFamily" Value="OpenSansRegular" />
         <Setter Property="FontSize" Value="{DynamicResource LabelFontSize}" />
@@ -461,7 +502,32 @@
                     <VisualState x:Name="Normal" />
                     <VisualState x:Name="Disabled">
                         <VisualState.Setters>
-                            <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Gray300}, Dark={StaticResource Gray600}}" />
+                            <Setter Property="TextColor" Value="{StaticResource Gray300}" />
+                        </VisualState.Setters>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateGroupList>
+        </Setter>
+    </Style>
+
+    <Style TargetType="Label" BasedOn="{StaticResource BaseLabelStyle}" />
+
+    <Style TargetType="Label" BasedOn="{StaticResource BaseLabelStyle}" x:Key="HeaderLabelStyle">
+        <Setter Property="TextColor" Value="{DynamicResource HeaderLabelColor}" />
+        <Setter Property="FontSize" Value="{DynamicResource HeaderTitleFontSize}" />
+        <Setter Property="FontAttributes" Value="Bold" />
+    </Style>
+
+    <!--Grid -->
+    <Style TargetType="Grid" x:Key="HoverGridStyle">
+        <Setter Property="VisualStateManager.VisualStateGroups">
+            <VisualStateGroupList>
+                <VisualStateGroup x:Name="CommonStates">
+                    <VisualState Name="Normal" />
+                    <VisualState x:Name="PointerOver">
+                        <VisualState.Setters>
+                            <Setter Property="Opacity"
+                                    Value="0.6" />
                         </VisualState.Setters>
                     </VisualState>
                 </VisualStateGroup>

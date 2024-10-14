@@ -3,31 +3,61 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewmodels="clr-namespace:MealPlannerClient.App.ViewModels"
              xmlns:resources="clr-namespace:MealPlannerClient.App.Resources"
-             xmlns:markupExtensions="using:MealPlannerClient.App.MarkupExtensions"
+             xmlns:markupExtensions="clr-namespace:MealPlannerClient.App.MarkupExtensions"
              x:Class="MealPlannerClient.App.Pages.SettingsPage"
              x:DataType="viewmodels:SettingsPageViewModel"
              Title="{markupExtensions:TranslateBinding SideMenu_Settings}"
              Shell.NavBarIsVisible="False"
              ControlTemplate="{StaticResource MainLayoutTemplate}">
-    <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto" ColumnDefinitions="3*,*" Padding="20" ColumnSpacing="20" RowSpacing="40" HorizontalOptions="Fill">
+    <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto" ColumnDefinitions="3*,*" Padding="40" ColumnSpacing="20" RowSpacing="40" HorizontalOptions="Fill">
 
         <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
                Text="{markupExtensions:TranslateBinding Settings_ColorTheme}" 
                 VerticalOptions="Center" 
-                HorizontalOptions="Start"/>
-        <HorizontalStackLayout Spacing="20" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
-            <Button 
-                Text="Settings" 
-                ImageSource="setting.png"
-                />
+                HorizontalOptions="Center"/>
+        <HorizontalStackLayout Spacing="20" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Center">
+            <Border Stroke="Black" StrokeThickness="1" StrokeShape="RoundRectangle 10,10,10,10" HeightRequest="100" WidthRequest="100">
+                <Grid ColumnDefinitions="*,*,*" Style="{StaticResource HoverGridStyle}">
+                    <BoxView Grid.Column="0" Color="Orange" />
+                    <BoxView Grid.Column="1" Color="White" />
+                    <BoxView Grid.Column="2" Color="Black" />
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnGridTapped" />
+                    </Grid.GestureRecognizers>
+                </Grid>
+            </Border>
 
-            <Button 
-                Text="Settings" 
-                ImageSource="setting.png"/>
+            <Border Stroke="Black" StrokeThickness="1" StrokeShape="RoundRectangle 10,10,10,10" HeightRequest="100" WidthRequest="100">
+                <Grid ColumnDefinitions="*,*" Style="{StaticResource HoverGridStyle}">
+                    <BoxView Grid.Column="0" Color="Navy" />
+                    <BoxView Grid.Column="1" Color="White" />
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnGridTapped" />
+                    </Grid.GestureRecognizers>
+                </Grid>
+            </Border>
 
-            <Button 
-                Text="Settings" 
-                ImageSource="setting.png"/>
+            <Border Stroke="Black" StrokeThickness="1" StrokeShape="RoundRectangle 10,10,10,10" HeightRequest="100" WidthRequest="100">
+                <Grid ColumnDefinitions="*,*,*" Style="{StaticResource HoverGridStyle}">
+                    <BoxView Grid.Column="0" Color="Black" />
+                    <BoxView Grid.Column="1" Color="Black" />
+                    <BoxView Grid.Column="2" Color="Green" />
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnGridTapped" />
+                    </Grid.GestureRecognizers>
+                </Grid>
+            </Border>
+
+            <Border Stroke="Black" StrokeThickness="1" StrokeShape="RoundRectangle 10,10,10,10" HeightRequest="100" WidthRequest="100">
+                <Grid ColumnDefinitions="*,*,*" Style="{StaticResource HoverGridStyle}">
+                    <BoxView Grid.Column="0" Color="OrangeRed" />
+                    <BoxView Grid.Column="1" Color="Black" />
+                    <BoxView Grid.Column="2" Color="White" />
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnGridTapped" />
+                    </Grid.GestureRecognizers>
+                </Grid>
+            </Border>
         </HorizontalStackLayout>
 
 
@@ -37,8 +67,8 @@
         <Label Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"
                Text="{markupExtensions:TranslateBinding Settings_FontSize}" 
                VerticalOptions="Center" 
-               HorizontalOptions="Start"/>
-        <HorizontalStackLayout Spacing="20" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2">
+               HorizontalOptions="Center"/>
+        <HorizontalStackLayout Spacing="20" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Center">
             <Button 
                 Text="{markupExtensions:TranslateBinding Settings_SmallFont}" 
                 ImageSource="font_small_white.png"
@@ -65,8 +95,8 @@
         <Label Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2"
                Text="{markupExtensions:TranslateBinding Settings_Language}" 
                VerticalOptions="Center" 
-               HorizontalOptions="Start"/>
-        <HorizontalStackLayout Spacing="20" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="2" VerticalOptions="Start">
+               HorizontalOptions="Center"/>
+        <HorizontalStackLayout Spacing="20" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="2" HorizontalOptions="Center">
             <Button 
                 Text="US English" 
                 ImageSource="usa.png"
