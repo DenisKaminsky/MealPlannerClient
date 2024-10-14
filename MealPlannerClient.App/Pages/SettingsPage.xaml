@@ -12,11 +12,12 @@
     <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto" ColumnDefinitions="3*,*" Padding="40" ColumnSpacing="20" RowSpacing="40" HorizontalOptions="Fill">
 
         <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
-               Text="{markupExtensions:TranslateBinding Settings_ColorTheme}" 
+                Text="{markupExtensions:TranslateBinding Settings_ColorTheme}" 
+                FontAttributes="Bold"
                 VerticalOptions="Center" 
                 HorizontalOptions="Center"/>
         <HorizontalStackLayout Spacing="20" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Center">
-            <Border Stroke="Black" StrokeThickness="1" StrokeShape="RoundRectangle 10,10,10,10" HeightRequest="100" WidthRequest="100">
+            <Border Stroke="{DynamicResource BorderColor}" StrokeThickness="1" StrokeShape="RoundRectangle 10,10,10,10" HeightRequest="100" WidthRequest="100">
                 <Grid ColumnDefinitions="*,*,*" Style="{StaticResource HoverGridStyle}">
                     <BoxView Grid.Column="0" Color="Orange" />
                     <BoxView Grid.Column="1" Color="White" />
@@ -27,7 +28,7 @@
                 </Grid>
             </Border>
 
-            <Border Stroke="Black" StrokeThickness="1" StrokeShape="RoundRectangle 10,10,10,10" HeightRequest="100" WidthRequest="100">
+            <Border Stroke="{DynamicResource BorderColor}" StrokeThickness="1" StrokeShape="RoundRectangle 10,10,10,10" HeightRequest="100" WidthRequest="100">
                 <Grid ColumnDefinitions="*,*" Style="{StaticResource HoverGridStyle}">
                     <BoxView Grid.Column="0" Color="Navy" />
                     <BoxView Grid.Column="1" Color="White" />
@@ -37,7 +38,7 @@
                 </Grid>
             </Border>
 
-            <Border Stroke="Black" StrokeThickness="1" StrokeShape="RoundRectangle 10,10,10,10" HeightRequest="100" WidthRequest="100">
+            <Border Stroke="{DynamicResource BorderColor}" StrokeThickness="1" StrokeShape="RoundRectangle 10,10,10,10" HeightRequest="100" WidthRequest="100">
                 <Grid ColumnDefinitions="*,*,*" Style="{StaticResource HoverGridStyle}">
                     <BoxView Grid.Column="0" Color="Black" />
                     <BoxView Grid.Column="1" Color="Black" />
@@ -48,7 +49,7 @@
                 </Grid>
             </Border>
 
-            <Border Stroke="Black" StrokeThickness="1" StrokeShape="RoundRectangle 10,10,10,10" HeightRequest="100" WidthRequest="100">
+            <Border Stroke="{DynamicResource BorderColor}" StrokeThickness="1" StrokeShape="RoundRectangle 10,10,10,10" HeightRequest="100" WidthRequest="100">
                 <Grid ColumnDefinitions="*,*,*" Style="{StaticResource HoverGridStyle}">
                     <BoxView Grid.Column="0" Color="OrangeRed" />
                     <BoxView Grid.Column="1" Color="Black" />
@@ -61,10 +62,11 @@
         </HorizontalStackLayout>
 
 
-        <BoxView HeightRequest="3" Color="Orange" HorizontalOptions="FillAndExpand" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"/>
+        <BoxView HeightRequest="3" Color="{DynamicResource DelimiterColor}" HorizontalOptions="FillAndExpand" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"/>
 
 
         <Label Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"
+               FontAttributes="Bold"
                Text="{markupExtensions:TranslateBinding Settings_FontSize}" 
                VerticalOptions="Center" 
                HorizontalOptions="Center"/>
@@ -89,10 +91,11 @@
         </HorizontalStackLayout>
 
 
-        <BoxView HeightRequest="3" Color="Orange" HorizontalOptions="FillAndExpand" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2"/>
+        <BoxView HeightRequest="3" Color="{DynamicResource DelimiterColor}" HorizontalOptions="FillAndExpand" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2"/>
 
 
         <Label Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2"
+               FontAttributes="Bold"
                Text="{markupExtensions:TranslateBinding Settings_Language}" 
                VerticalOptions="Center" 
                HorizontalOptions="Center"/>

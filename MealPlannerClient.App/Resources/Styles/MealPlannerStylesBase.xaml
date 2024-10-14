@@ -418,19 +418,28 @@
 
 
 
+
+
+
+
+
+
+
+
     <!-- Button -->
     <Style x:Key="BaseButtonStyle" TargetType="Button">
         <Setter Property="TextColor" Value="{DynamicResource ButtonTextColor}" />
         <Setter Property="BackgroundColor" Value="{DynamicResource ButtonColor}"/>
         <Setter Property="FontFamily" Value="OpenSansRegular"/>
         <Setter Property="FontSize" Value="{DynamicResource ButtonFontSize}"/>
-        <Setter Property="BorderWidth" Value="0"/>
         <Setter Property="CornerRadius" Value="8"/>
         <Setter Property="Padding" Value="14,10"/>
         <Setter Property="MinimumHeightRequest" Value="44"/>
         <Setter Property="MinimumWidthRequest" Value="44"/>
         <Setter Property="HeightRequest" Value="50"/>
         <Setter Property="WidthRequest" Value="230"/>
+        <Setter Property="BorderColor" Value="Green"/>
+        <Setter Property="BorderWidth" Value="1"/>
         <Setter Property="VisualStateManager.VisualStateGroups">
             <VisualStateGroupList>
                 <VisualStateGroup x:Name="CommonStates">
@@ -502,7 +511,7 @@
                     <VisualState x:Name="Normal" />
                     <VisualState x:Name="Disabled">
                         <VisualState.Setters>
-                            <Setter Property="TextColor" Value="{StaticResource Gray300}" />
+                            <Setter Property="TextColor" Value="{DynamicResource LabelDisabledColor}" />
                         </VisualState.Setters>
                     </VisualState>
                 </VisualStateGroup>
@@ -517,6 +526,8 @@
         <Setter Property="FontSize" Value="{DynamicResource HeaderTitleFontSize}" />
         <Setter Property="FontAttributes" Value="Bold" />
     </Style>
+
+
 
     <!--Grid -->
     <Style TargetType="Grid" x:Key="HoverGridStyle">

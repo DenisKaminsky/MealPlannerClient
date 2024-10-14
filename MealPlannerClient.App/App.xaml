@@ -8,7 +8,7 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Resources/Styles/MealPlannerStylesBase.xaml" />
-                <ResourceDictionary Source="Resources/Themes/MainTheme.xaml" />
+                <ResourceDictionary Source="Resources/Themes/HackerTheme.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
             <ControlTemplate x:Key="MainLayoutTemplate">
@@ -28,10 +28,6 @@
                            HorizontalOptions="Center"
                            Style="{StaticResource HeaderLabelStyle}"/>
 
-                    <!-- Delimiter -->
-                    <BoxView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HeightRequest="3" Color="{DynamicResource MenuDelimiterColor}"/>
-                    <BoxView Grid.Row="1" Grid.RowSpan="3" Grid.Column="1" WidthRequest="3" Color="{DynamicResource MenuDelimiterColor}" HorizontalOptions="Start"/>
-
                     <!-- Side Menu Section -->
                     <BoxView Grid.RowSpan="2" Grid.Row="2" Grid.Column="0" Color="{DynamicResource MenuBackgroundColor}" WidthRequest="250" />
                     <StackLayout Grid.Row="2" Grid.Column="0" VerticalOptions="Start" Padding="10" Spacing="20">
@@ -40,7 +36,8 @@
                             Text="{markupExtensions:TranslateBinding SideMenu_Inventory}"
                             Command="{Binding NavigationItemClickedCommand, Source={x:Static app:App.MainViewModel}}" 
                             CommandParameter="inventory"
-                            ImageSource="box_white.png"/>
+                            ImageSource="box_white.png"
+                            />
 
                         <Button
                             Style="{StaticResource SideMenuButtonStyle}"
@@ -53,6 +50,11 @@
 
                     <!-- Content Section-->
                     <ContentPresenter Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="2" Padding="20" BackgroundColor="{DynamicResource ContentAreaBackgroundColor}"/>
+
+
+                    <!-- Delimiter -->
+                    <BoxView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HeightRequest="3" Color="{DynamicResource MenuDelimiterColor}"/>
+                    <BoxView Grid.Row="1" Grid.RowSpan="3" Grid.Column="1" WidthRequest="3" Color="{DynamicResource MenuDelimiterColor}" HorizontalOptions="Start"/>
 
 
                     <!-- Footer Section-->

@@ -4,8 +4,10 @@
              x:Class="MealPlannerClient.App.Resources.Themes.MainTheme">
 
     <Color x:Key="HeaderColor">Orange</Color>
-    <Color x:Key="MenuDelimiterColor">Black</Color>
     <Color x:Key="MenuBackgroundColor">Orange</Color>
+
+    <Color x:Key="MenuDelimiterColor">Black</Color>
+    <Color x:Key="DelimiterColor">Orange</Color>
 
     <Color x:Key="MenuButtonColor">Black</Color>
     <Color x:Key="MenuButtonTextColor">White</Color>
@@ -22,12 +24,8 @@
     <Color x:Key="ContentAreaBackgroundColor">White</Color>
 
     <Color x:Key="LabelColor">Black</Color>
+    <Color x:Key="LabelDisabledColor">#ACACAC</Color>
     <Color x:Key="HeaderLabelColor">Black</Color>
 
-
-    <Color x:Key="PrimaryTextColor">Black</Color>
-    <Color x:Key="SecondaryTextColor">White</Color>
-    <Color x:Key="TertiaryTextColor">Gray</Color>
-    <Color x:Key="TransparentColor">Transparent</Color>
-
+    <Color x:Key="BorderColor">Black</Color>
 </ResourceDictionary>
