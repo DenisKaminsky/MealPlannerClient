@@ -15,6 +15,7 @@ namespace MealPlannerClient.App
             //initialize resources bases on saved preferences
             LanguagePreferencesManager.Initialize();
             FontPreferencesManager.Initialize();
+            ThemePreferencesManager.Initialize();
 
             MainPage = new AppShell();
             MainViewModel = new ViewModels.MainViewModel();

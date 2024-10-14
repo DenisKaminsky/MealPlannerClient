@@ -26,5 +26,5 @@
     <Color x:Key="LabelDisabledColor">#ACACAC</Color>
     <Color x:Key="HeaderLabelColor">OrangeRed</Color>
 
-    <Color x:Key="BorderColor">OrangeRed</Color>
+    <Color x:Key="BorderColor">Black</Color>
 </ResourceDictionary>

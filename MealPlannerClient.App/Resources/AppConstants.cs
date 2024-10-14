@@ -1,10 +1,12 @@
 ﻿using MealPlannerClient.App.Enums;
+using FontSize = MealPlannerClient.App.Enums.FontSize;
 
 namespace MealPlannerClient.App.Resources
 {
     public static class AppConstants
     {
         public static readonly FontSize FontSizeDefault = FontSize.Medium;
+        public static readonly CustomTheme ThemeDefault = CustomTheme.Main;
 
         #region Button Font Size
         public static readonly double ButtonFontSizeSmall = 10;

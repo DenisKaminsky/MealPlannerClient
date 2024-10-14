@@ -11,7 +11,7 @@ namespace MealPlannerClient.App.ViewModels
         [RelayCommand]
         public void SetTheme(CustomTheme theme)
         {
-            LanguagePreferencesManager.SetRussianLanguage();
+            ThemePreferencesManager.SetTheme(theme);
         }
 
         [RelayCommand]
