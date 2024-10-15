@@ -43,6 +43,32 @@ namespace MealPlannerClient.App.ViewModels
             MyProducts.CollectionChanged += MyProductsOnCollectionChanged;
         }
 
+        public async Task InitializeAsync()
+        {
+            //Update IsBusy status
+            if (IsBusy)
+            {
+                return;
+            }
+
+            try
+            {
+                IsBusy = true;
+
+                await InitializeProductsAsync();
+            }
+            finally
+            {
+                IsBusy = false;
+                IsDirty = false;
+            }
+        }
+
+        public void CleanupAsync()
+        {
+            MyProducts.Clear();
+        }
+
         [RelayCommand]
         public void IncrementMyProductQuantity(string myProductId)
         {
@@ -83,32 +109,6 @@ namespace MealPlannerClient.App.ViewModels
         {
             var item = MyProducts.First(p => p.Id == myProductId);
             MyProducts.Remove(item);
-        }
-
-        public async Task InitializeAsync()
-        {
-            //Update IsBusy status
-            if (IsBusy)
-            {
-                return;
-            }
-            
-            try
-            {
-                IsBusy = true;
-
-                await InitializeProductsAsync();
-            }
-            finally
-            {
-                IsBusy = false;
-                IsDirty = false;
-            }
-        }
-
-        public void CleanupAsync()
-        {
-            MyProducts.Clear();
         }
 
         private void MyProductsOnCollectionChanged(object? sender, NotifyCollectionChangedEventArgs e)

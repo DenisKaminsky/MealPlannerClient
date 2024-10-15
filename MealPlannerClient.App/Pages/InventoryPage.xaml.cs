@@ -1,3 +1,4 @@
+using MealPlannerClient.App.Resources;
 using MealPlannerClient.App.ViewModels;
 
 namespace MealPlannerClient.App.Pages;
@@ -38,7 +39,12 @@ public partial class InventoryPage : ContentPage
         // Show alert
         if (_viewModel.IsDirty)
         {
-            var answer = await DisplayAlert("Confirm", "There some unsaved changed.\r\nLeaving the page will revert them.\r\nAre you sure?", "Yes", "No");
+            var modalHeader = (string)LocalizationResourceManager.Instance["LeavePageWithUnsavedChangesAlertTitle"];
+            var modalText = (string)LocalizationResourceManager.Instance["LeavePageWithUnsavedChangesAlertText"];
+            var modalYesButton = (string)LocalizationResourceManager.Instance["LeavePageWithUnsavedChangesAlertYesOption"];
+            var modalNoButton = (string)LocalizationResourceManager.Instance["LeavePageWithUnsavedChangesAlertNoOption"];
+
+            var answer = await DisplayAlert(modalHeader, modalText, modalYesButton, modalNoButton);
             if (!answer)
             {
                 args.Cancel();

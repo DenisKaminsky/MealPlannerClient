@@ -117,6 +117,33 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="EnterNumber" xml:space="preserve">
+    <value>Введите число</value>
+  </data>
+  <data name="Gram" xml:space="preserve">
+    <value>г</value>
+  </data>
+  <data name="InventoryEmpty" xml:space="preserve">
+    <value>Продукты не найдены</value>
+  </data>
+  <data name="LeavePageWithUnsavedChangesAlertNoOption" xml:space="preserve">
+    <value>Нет</value>
+  </data>
+  <data name="LeavePageWithUnsavedChangesAlertText" xml:space="preserve">
+    <value>Покинув страницу вы сбросите все несохраненные изменения. Вы уверены?</value>
+  </data>
+  <data name="LeavePageWithUnsavedChangesAlertTitle" xml:space="preserve">
+    <value>Подтверждение</value>
+  </data>
+  <data name="LeavePageWithUnsavedChangesAlertYesOption" xml:space="preserve">
+    <value>Да</value>
+  </data>
+  <data name="Milliliter" xml:space="preserve">
+    <value>мл</value>
+  </data>
+  <data name="MyProductsText" xml:space="preserve">
+    <value>Мои Продукты</value>
+  </data>
   <data name="Settings_BigFont" xml:space="preserve">
     <value>Большой</value>
   </data>
@@ -143,5 +170,8 @@
   </data>
   <data name="SideMenu_Settings" xml:space="preserve">
     <value>Настройки</value>
+  </data>
+  <data name="Unit" xml:space="preserve">
+    <value>шт.</value>
   </data>
 </root>

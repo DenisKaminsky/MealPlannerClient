@@ -26,6 +26,20 @@ namespace MealPlannerClient.App.Resources
         public static readonly double HeaderTitleFontSizeBig = 40;
         #endregion
 
+        #region Text Font Size
+        public static readonly double TextFontSizeSmall = 15;
+        public static readonly double TextFontSizeMid = 20;
+        public static readonly double TextFontSizeBig = 25;
+
+        public static readonly double HelpTextFontSizeSmall = 10;
+        public static readonly double HelpTextFontSizeMid = 15;
+        public static readonly double HelpTextFontSizeBig = 20;
+
+        public static readonly double InputTextFontSizeSmall = 10;
+        public static readonly double InputTextFontSizeMid = 15;
+        public static readonly double InputTextFontSizeBig = 20;
+        #endregion
+
         #region Language
         public static readonly string LanguageUSEnglish = "en-US";
         public static readonly string LanguageRussian = "ru";

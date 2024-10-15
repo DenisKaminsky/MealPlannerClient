@@ -13,23 +13,24 @@
 
     <ContentPage.Resources>
         <converters:InverseBooleanConverter x:Key="InverseBooleanConverter" />
+        <converters:MeasurementUnitToTranslatedStringConverter x:Key="MeasurementUnitToTranslatedStringConverter" />
     </ContentPage.Resources>
 
     <ScrollView>
-        <Grid RowDefinitions="Auto,Auto,Auto,Auto" ColumnDefinitions="*">
+        <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto" ColumnDefinitions="*">
             <Label Grid.Row="0" Grid.Column="0" Grid.RowSpan="2"
-                Text="Your inventory is empty" 
+                Text="{markupExtensions:TranslateBinding InventoryEmpty}" 
                 FontAttributes="Bold" 
                 HorizontalOptions="Center"
                 VerticalOptions="Center" 
                 IsVisible="{Binding HasMyProducts, Converter={StaticResource InverseBooleanConverter}}"/>
 
             <Label Grid.Row="0" Grid.Column="0"
-                   Text="My Products" 
-                   FontAttributes="Bold" 
-                   HorizontalOptions="Start"
-                   VerticalOptions="Center" 
-                   IsVisible="{Binding HasMyProducts}"/>
+                Text="{markupExtensions:TranslateBinding MyProductsText}" 
+                FontAttributes="Bold" 
+                HorizontalOptions="Start"
+                VerticalOptions="Center" 
+                IsVisible="{Binding HasMyProducts}"/>
 
             <ScrollView HeightRequest="385" Grid.Row="1" Grid.Column="0" Padding="0,0,20,0">
                 <CollectionView
@@ -45,56 +46,55 @@
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="models:Product">
                             <Border Stroke="{DynamicResource BorderColor}" StrokeThickness="2" StrokeShape="RoundRectangle 5,5,5,5" Padding="7" >
-                                <Grid RowDefinitions="Auto,Auto" ColumnDefinitions="Auto,Auto">
+                                <Grid RowDefinitions="Auto,Auto" ColumnDefinitions="Auto,*,Auto">
                                     <Label Grid.Row="0" Grid.Column="0"
-                                       FontSize="20"
-                                       Text="{Binding ProductName}"/>
+                                        HorizontalOptions="Start"
+                                        WidthRequest="300"
+                                        Style="{StaticResource TextLabelStyle}"
+                                        Text="{Binding ProductName}"/>
 
                                     <Label Grid.Row="1" Grid.Column="0"
-                                       FontSize="15"
-                                       Text="{Binding CategoryName}"/>
+                                        HorizontalOptions="Start"
+                                        Style="{StaticResource HelpTextLabelStyle}"
+                                        Text="{Binding CategoryName}"/>
 
                                     <HorizontalStackLayout Spacing="5" Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" Margin="10,0,0,0">
                                         <Border Stroke="{DynamicResource BorderColor}" StrokeThickness="1" StrokeShape="RoundRectangle 5,5,5,5" WidthRequest="250">
                                             <Entry 
-                                            Keyboard="Numeric"
-                                            Placeholder="Enter a number" 
-                                            VerticalTextAlignment="Center"
-                                            BackgroundColor="{DynamicResource ContentAreaBackgroundColor}"
-                                            Text="{Binding Quantity, Mode=TwoWay}"
-                                            TextColor="{DynamicResource LabelColor}"/>
+                                                Keyboard="Numeric"
+                                                VerticalTextAlignment="Center"
+                                                Placeholder="{markupExtensions:TranslateBinding EnterNumber}"
+                                                Text="{Binding Quantity, Mode=TwoWay}"/>
                                         </Border>
+
+                                        <Label 
+                                            WidthRequest="70"
+                                            VerticalTextAlignment="Center"
+                                            HorizontalTextAlignment="Center"
+                                            Style="{StaticResource HelpTextLabelStyle}"
+                                            Text="{Binding ProductUnitOfMeasurement, Converter={StaticResource MeasurementUnitToTranslatedStringConverter}}"/>
+
                                         <Button 
-                                            Text="—" 
-                                            BackgroundColor="{DynamicResource ContentAreaBackgroundColor}" 
-                                            TextColor="{DynamicResource LabelColor}" 
+                                            Text="–" 
                                             WidthRequest="50" 
-                                            FontSize="25"
-                                            BorderWidth="1" 
-                                            BorderColor="{DynamicResource BorderColor}"
+                                            Style="{StaticResource StepperButtonStyle}"
                                             Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:InventoryPageViewModel}}, Path=DecrementMyProductQuantityCommand}"
                                             CommandParameter="{Binding Id}"/>
+
                                         <Button 
                                             Text="+" 
-                                            BackgroundColor="{DynamicResource ContentAreaBackgroundColor}" 
-                                            TextColor="{DynamicResource LabelColor}" 
                                             WidthRequest="50" 
-                                            FontSize="25"
-                                            BorderWidth="1" 
-                                            BorderColor="{DynamicResource BorderColor}"
+                                            Style="{StaticResource StepperButtonStyle}"
                                             Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:InventoryPageViewModel}}, Path=IncrementMyProductQuantityCommand}"
                                             CommandParameter="{Binding Id}"/>
-                                        <Button 
-                                            ImageSource="delete_white.png"
+                                    </HorizontalStackLayout>
+
+                                    <Button Grid.Row="0" Grid.Column="2" Grid.RowSpan="2"
                                             HeightRequest="50"
-                                            BackgroundColor="{DynamicResource ButtonColor}" 
-                                            WidthRequest="50" 
-                                            FontSize="25"
-                                            BorderWidth="1" 
-                                            BorderColor="{DynamicResource BorderColor}"
+                                            WidthRequest="50"
+                                            Style="{StaticResource DeleteButtonStyle}"
                                             Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:InventoryPageViewModel}}, Path=RemoveMyProductCommand}"
                                             CommandParameter="{Binding Id}"/>
-                                    </HorizontalStackLayout>
                                 </Grid>
                             </Border>
                         </DataTemplate>
@@ -102,12 +102,16 @@
                 </CollectionView>
             </ScrollView>
 
-            <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
+            <ActivityIndicator Grid.Row="2"
+                IsRunning="{Binding IsBusy}" 
+                IsVisible="{Binding IsBusy}" 
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand"/>
 
 
-            <BoxView Grid.Row="2" Grid.Column="0" HeightRequest="3" Color="{DynamicResource DelimiterColor}" Margin="0,20,0,20"/>
+            <BoxView Grid.Row="3" Grid.Column="0" HeightRequest="3" Color="{DynamicResource DelimiterColor}" Margin="0,20,0,20"/>
 
-            <HorizontalStackLayout Grid.Row="3" Grid.Column="0" Padding="20">
+            <HorizontalStackLayout Grid.Row="4" Grid.Column="0" Padding="20">
                 <Button Text="Add New" Command="{Binding AddNewItemCommand}"/>
             </HorizontalStackLayout>
         </Grid>

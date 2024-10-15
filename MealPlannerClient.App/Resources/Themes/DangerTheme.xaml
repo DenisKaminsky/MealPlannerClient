@@ -19,6 +19,8 @@
     <Color x:Key="ButtonDisabledColor">#212121</Color>
     <Color x:Key="ButtonHoverColor">Coral</Color>
     <Color x:Key="ButtonClickColor">Black</Color>
+    <Color x:Key="DeleteButtonColor">Black</Color>
+    <Color x:Key="StepperButtonColor">OrangeRed</Color>
 
     <Color x:Key="ContentAreaBackgroundColor">White</Color>
 
@@ -27,4 +29,8 @@
     <Color x:Key="HeaderLabelColor">OrangeRed</Color>
 
     <Color x:Key="BorderColor">Black</Color>
+
+    <Color x:Key="TextColor">OrangeRed</Color>
+    <Color x:Key="HelpTextColor">Black</Color>
+    <Color x:Key="InputTextColor">Black</Color>
 </ResourceDictionary>

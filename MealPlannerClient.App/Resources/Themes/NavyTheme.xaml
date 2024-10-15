@@ -20,6 +20,8 @@
     <Color x:Key="ButtonDisabledColor">#212121</Color>
     <Color x:Key="ButtonHoverColor">#212121</Color>
     <Color x:Key="ButtonClickColor">#404040</Color>
+    <Color x:Key="DeleteButtonColor">Navy</Color>
+    <Color x:Key="StepperButtonColor">White</Color>
 
     <Color x:Key="ContentAreaBackgroundColor">White</Color>
 
@@ -28,4 +30,8 @@
     <Color x:Key="HeaderLabelColor">White</Color>
 
     <Color x:Key="BorderColor">Black</Color>
+
+    <Color x:Key="TextColor">Black</Color>
+    <Color x:Key="HelpTextColor">Navy</Color>
+    <Color x:Key="InputTextColor">Black</Color>
 </ResourceDictionary>

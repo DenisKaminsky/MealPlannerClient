@@ -61,6 +61,87 @@ namespace MealPlannerClient.App.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Enter a number.
+        /// </summary>
+        internal static string EnterNumber {
+            get {
+                return ResourceManager.GetString("EnterNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to g.
+        /// </summary>
+        internal static string Gram {
+            get {
+                return ResourceManager.GetString("Gram", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your inventory is empty.
+        /// </summary>
+        internal static string InventoryEmpty {
+            get {
+                return ResourceManager.GetString("InventoryEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No.
+        /// </summary>
+        internal static string LeavePageWithUnsavedChangesAlertNoOption {
+            get {
+                return ResourceManager.GetString("LeavePageWithUnsavedChangesAlertNoOption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There some unsaved changes. Leaving the page will revert them. Are you sure?.
+        /// </summary>
+        internal static string LeavePageWithUnsavedChangesAlertText {
+            get {
+                return ResourceManager.GetString("LeavePageWithUnsavedChangesAlertText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Confirm.
+        /// </summary>
+        internal static string LeavePageWithUnsavedChangesAlertTitle {
+            get {
+                return ResourceManager.GetString("LeavePageWithUnsavedChangesAlertTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Yes.
+        /// </summary>
+        internal static string LeavePageWithUnsavedChangesAlertYesOption {
+            get {
+                return ResourceManager.GetString("LeavePageWithUnsavedChangesAlertYesOption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to mL.
+        /// </summary>
+        internal static string Milliliter {
+            get {
+                return ResourceManager.GetString("Milliliter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to My Products.
+        /// </summary>
+        internal static string MyProductsText {
+            get {
+                return ResourceManager.GetString("MyProductsText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Big.
         /// </summary>
         internal static string Settings_BigFont {
@@ -138,6 +219,15 @@ namespace MealPlannerClient.App.Resources.Languages {
         internal static string SideMenu_Settings {
             get {
                 return ResourceManager.GetString("SideMenu_Settings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to item(s).
+        /// </summary>
+        internal static string Unit {
+            get {
+                return ResourceManager.GetString("Unit", resourceCulture);
             }
         }
     }
