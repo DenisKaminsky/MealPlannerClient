@@ -130,6 +130,16 @@ namespace MealPlannerClient.App.ViewModels
             MyProducts.Remove(item);
         }
 
+        [RelayCommand]
+        public void PerformSearch(string searchString)
+        {
+            AvailableProducts = _allAvailableProducts
+                .Where(x => x.Name.Contains(searchString, StringComparison.InvariantCultureIgnoreCase))
+                .GroupBy(x => x.CategoryId)
+                .Select(x => new ProductGroup(x.Key, x.First().CategoryName, x.ToList()))
+                .ToList();
+        }
+
         private void MyProductsOnCollectionChanged(object? sender, NotifyCollectionChangedEventArgs e)
         {
             HasMyProducts = sender != null && ((IList)sender).Count > 0;

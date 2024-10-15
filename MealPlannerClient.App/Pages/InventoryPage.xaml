@@ -153,9 +153,9 @@
 
 
             <VerticalStackLayout Grid.Row="3" Grid.Column="0" Grid.RowSpan="2" 
-                                 HorizontalOptions="Center" 
-                                 VerticalOptions="Center"
-                                 IsVisible="{Binding IsAvailableProductsLoaded}">
+                 HorizontalOptions="Center" 
+                 VerticalOptions="Center"
+                 IsVisible="{Binding IsAvailableProductsLoaded}">
 
                 <Label 
                     Text="{markupExtensions:TranslateBinding Name=AvailableProductsEmpty}" 
@@ -166,12 +166,21 @@
 
             </VerticalStackLayout>
 
-            <Label Grid.Row="3" Grid.Column="0"
-                   Text="{markupExtensions:TranslateBinding Name=AvailableProductsText}" 
-                   FontAttributes="Bold" 
-                   HorizontalOptions="Start"
-                   VerticalOptions="Center" 
-                   IsVisible="{Binding HasAvailableProducts}"/>
+            <VerticalStackLayout Grid.Row="3" Grid.Column="0" 
+                 IsVisible="{Binding HasAvailableProducts}" 
+                 Padding="13,0,13,0">
+                <Label 
+                       Text="{markupExtensions:TranslateBinding Name=AvailableProductsText}" 
+                       FontAttributes="Bold" 
+                       HorizontalOptions="Start"
+                       VerticalOptions="Center" />
+                <Border Stroke="{DynamicResource BorderColor}" StrokeThickness="2" StrokeShape="RoundRectangle 5,5,5,5">
+                    <SearchBar x:Name="SearchBar"
+                        Placeholder="{markupExtensions:TranslateBinding Name=SearchBarPlaceholder}"
+                        SearchCommand="{Binding PerformSearchCommand}"
+                        SearchCommandParameter="{Binding Text, Source={x:Reference SearchBar}}"/>
+                </Border>
+            </VerticalStackLayout>
 
             <ScrollView HeightRequest="500" Grid.Row="4" Grid.Column="0" Padding="0,0,0,0">
                 <CollectionView

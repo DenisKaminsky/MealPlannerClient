@@ -187,6 +187,15 @@ namespace MealPlannerClient.App.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Type name of the product....
+        /// </summary>
+        internal static string SearchBarPlaceholder {
+            get {
+                return ResourceManager.GetString("SearchBarPlaceholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Big.
         /// </summary>
         internal static string Settings_BigFont {

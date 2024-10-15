@@ -159,6 +159,9 @@
   <data name="MyProductsText" xml:space="preserve">
     <value>Мои Продукты</value>
   </data>
+  <data name="SearchBarPlaceholder" xml:space="preserve">
+    <value>Введите название продукта...</value>
+  </data>
   <data name="Settings_BigFont" xml:space="preserve">
     <value>Большой</value>
   </data>

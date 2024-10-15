@@ -33,4 +33,5 @@
     <Color x:Key="TextColor">OrangeRed</Color>
     <Color x:Key="HelpTextColor">Black</Color>
     <Color x:Key="InputTextColor">Black</Color>
+    <Color x:Key="PlaceholderTextColor">#bdbdbd</Color>
 </ResourceDictionary>

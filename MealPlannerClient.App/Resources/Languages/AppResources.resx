@@ -159,6 +159,9 @@
   <data name="MyProductsText" xml:space="preserve">
     <value>My Products</value>
   </data>
+  <data name="SearchBarPlaceholder" xml:space="preserve">
+    <value>Type name of the product...</value>
+  </data>
   <data name="Settings_BigFont" xml:space="preserve">
     <value>Big</value>
   </data>
