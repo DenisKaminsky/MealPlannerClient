@@ -8,7 +8,7 @@
              x:Class="MealPlannerClient.App.Pages.InventoryPage"
              x:DataType="viewModels:InventoryPageViewModel"
              Shell.NavBarIsVisible="False"
-             Title="{markupExtensions:TranslateBinding SideMenu_Inventory}"
+             Title="{markupExtensions:TranslateBinding Name=SideMenu_Inventory}"
              ControlTemplate="{StaticResource MainLayoutTemplate}">
 
     <ContentPage.Resources>
@@ -17,16 +17,44 @@
     </ContentPage.Resources>
 
     <ScrollView>
-        <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto" ColumnDefinitions="*">
-            <Label Grid.Row="0" Grid.Column="0" Grid.RowSpan="2"
-                Text="{markupExtensions:TranslateBinding InventoryEmpty}" 
-                FontAttributes="Bold" 
-                HorizontalOptions="Center"
-                VerticalOptions="Center" 
-                IsVisible="{Binding HasMyProducts, Converter={StaticResource InverseBooleanConverter}}"/>
+        <Grid RowDefinitions="Auto,Auto,Auto,Auto" ColumnDefinitions="*">
+
+            <VerticalStackLayout Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" 
+                HorizontalOptions="Center" 
+                VerticalOptions="Center"
+                IsVisible="{Binding IsBusy}">
+
+                <Label 
+                    Text="{markupExtensions:TranslateBinding Name=InventoryLoading}" 
+                    FontAttributes="Bold" 
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"/>
+
+                <ActivityIndicator 
+                    IsRunning="true" 
+                    IsVisible="true" 
+                    VerticalOptions="CenterAndExpand" 
+                    HorizontalOptions="CenterAndExpand"/>
+
+            </VerticalStackLayout>
+
+
+            <VerticalStackLayout Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" 
+                HorizontalOptions="Center" 
+                VerticalOptions="Center"
+                IsVisible="{Binding IsBusy, Converter={StaticResource InverseBooleanConverter}}">
+
+                <Label 
+                    Text="{markupExtensions:TranslateBinding Name=InventoryEmpty}" 
+                    FontAttributes="Bold" 
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center" 
+                    IsVisible="{Binding HasMyProducts, Converter={StaticResource InverseBooleanConverter}}"/>
+
+            </VerticalStackLayout>
 
             <Label Grid.Row="0" Grid.Column="0"
-                Text="{markupExtensions:TranslateBinding MyProductsText}" 
+                Text="{markupExtensions:TranslateBinding Name=MyProductsText}" 
                 FontAttributes="Bold" 
                 HorizontalOptions="Start"
                 VerticalOptions="Center" 
@@ -63,7 +91,7 @@
                                             <Entry 
                                                 Keyboard="Numeric"
                                                 VerticalTextAlignment="Center"
-                                                Placeholder="{markupExtensions:TranslateBinding EnterNumber}"
+                                                Placeholder="{markupExtensions:TranslateBinding Name=EnterNumber}"
                                                 Text="{Binding Quantity, Mode=TwoWay}"/>
                                         </Border>
 
@@ -102,16 +130,9 @@
                 </CollectionView>
             </ScrollView>
 
-            <ActivityIndicator Grid.Row="2"
-                IsRunning="{Binding IsBusy}" 
-                IsVisible="{Binding IsBusy}" 
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand"/>
+            <BoxView Grid.Row="2" Grid.Column="0" HeightRequest="3" Color="{DynamicResource DelimiterColor}" Margin="0,20,0,20"/>
 
-
-            <BoxView Grid.Row="3" Grid.Column="0" HeightRequest="3" Color="{DynamicResource DelimiterColor}" Margin="0,20,0,20"/>
-
-            <HorizontalStackLayout Grid.Row="4" Grid.Column="0" Padding="20">
+            <HorizontalStackLayout Grid.Row="3" Grid.Column="0" Padding="20">
                 <Button Text="Add New" Command="{Binding AddNewItemCommand}"/>
             </HorizontalStackLayout>
         </Grid>

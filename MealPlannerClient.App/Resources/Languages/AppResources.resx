@@ -126,6 +126,9 @@
   <data name="InventoryEmpty" xml:space="preserve">
     <value>Your inventory is empty</value>
   </data>
+  <data name="InventoryLoading" xml:space="preserve">
+    <value>Your inventory is loading</value>
+  </data>
   <data name="LeavePageWithUnsavedChangesAlertNoOption" xml:space="preserve">
     <value>No</value>
   </data>

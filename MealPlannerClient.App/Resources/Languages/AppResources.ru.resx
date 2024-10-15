@@ -126,6 +126,9 @@
   <data name="InventoryEmpty" xml:space="preserve">
     <value>Продукты не найдены</value>
   </data>
+  <data name="InventoryLoading" xml:space="preserve">
+    <value>Продукты загружаются</value>
+  </data>
   <data name="LeavePageWithUnsavedChangesAlertNoOption" xml:space="preserve">
     <value>Нет</value>
   </data>

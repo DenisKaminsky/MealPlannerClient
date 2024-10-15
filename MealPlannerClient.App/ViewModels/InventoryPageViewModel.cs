@@ -28,9 +28,8 @@ namespace MealPlannerClient.App.ViewModels
 
         [ObservableProperty]
         private bool _isDirty = false;
-
-        [ObservableProperty] 
-        private ObservableCollection<Product> _myProducts;
+        
+        public ObservableCollection<Product> MyProducts { get; set; }
 
         public InventoryPageViewModel(IMyProductsService myProductsService)
         {
@@ -45,7 +44,7 @@ namespace MealPlannerClient.App.ViewModels
 
         public async Task InitializeAsync()
         {
-            //Update IsBusy status
+            IsDirty = false;
             if (IsBusy)
             {
                 return;
@@ -68,7 +67,7 @@ namespace MealPlannerClient.App.ViewModels
         {
             MyProducts.Clear();
         }
-
+        
         [RelayCommand]
         public void IncrementMyProductQuantity(string myProductId)
         {
@@ -121,6 +120,8 @@ namespace MealPlannerClient.App.ViewModels
         {
             try
             {
+                HasMyProducts = false;
+
                 var products = await _myProductsService.GetAllAsync();
                 MyProducts.Clear();
                 if (products != null)

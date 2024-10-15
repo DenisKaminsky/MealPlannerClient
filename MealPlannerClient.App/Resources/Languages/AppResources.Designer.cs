@@ -88,6 +88,15 @@ namespace MealPlannerClient.App.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Your inventory is loading.
+        /// </summary>
+        internal static string InventoryLoading {
+            get {
+                return ResourceManager.GetString("InventoryLoading", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No.
         /// </summary>
         internal static string LeavePageWithUnsavedChangesAlertNoOption {

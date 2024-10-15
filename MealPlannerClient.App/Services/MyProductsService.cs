@@ -6,8 +6,10 @@ namespace MealPlannerClient.App.Services
 {
     public class MyProductsService: IMyProductsService
     {
-        public Task<List<Product>> GetAllAsync()
+        public async Task<List<Product>> GetAllAsync()
         {
+            await Task.Delay(20000);
+
             var result = new List<Product>
             {
                 new Product()
@@ -62,7 +64,7 @@ namespace MealPlannerClient.App.Services
                 }
             };
 
-            return Task.FromResult(result);
+            return result;
         }
     }
 }
