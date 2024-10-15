@@ -21,10 +21,13 @@ namespace MealPlannerClient.App
             MainViewModel = new ViewModels.MainViewModel();
         }
 
-        /*protected override Window CreateWindow(IActivationState? activationState)
+        protected override Window CreateWindow(IActivationState? activationState)
         {
             var window = base.CreateWindow(activationState);
 
+            window.Height = 1200;
+
+            /*
             #region transition to "Running"
             window.Created += (s, e) =>
             {
@@ -64,15 +67,9 @@ namespace MealPlannerClient.App
                 Toast.Make("Destroying", ToastDuration.Short, 15).Show();
             };
             #endregion
+            */
 
             return window;
-        }*/
-        private void Page1_OnClicked(object? sender, EventArgs e)
-        {
-        }
-
-        private async void Page2_OnClicked(object? sender, EventArgs e)
-        {
         }
     }
 }

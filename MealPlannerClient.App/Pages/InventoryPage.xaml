@@ -17,12 +17,12 @@
     </ContentPage.Resources>
 
     <ScrollView>
-        <Grid RowDefinitions="Auto,Auto,Auto,Auto" ColumnDefinitions="*">
+        <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto" ColumnDefinitions="*">
 
             <VerticalStackLayout Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" 
                 HorizontalOptions="Center" 
                 VerticalOptions="Center"
-                IsVisible="{Binding IsBusy}">
+                IsVisible="{Binding IsMyProductsBusy}">
 
                 <Label 
                     Text="{markupExtensions:TranslateBinding Name=InventoryLoading}" 
@@ -42,7 +42,7 @@
             <VerticalStackLayout Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" 
                 HorizontalOptions="Center" 
                 VerticalOptions="Center"
-                IsVisible="{Binding IsBusy, Converter={StaticResource InverseBooleanConverter}}">
+                IsVisible="{Binding IsMyProductsBusy, Converter={StaticResource InverseBooleanConverter}}">
 
                 <Label 
                     Text="{markupExtensions:TranslateBinding Name=InventoryEmpty}" 
@@ -72,7 +72,7 @@
                     </CollectionView.ItemsLayout>
 
                     <CollectionView.ItemTemplate>
-                        <DataTemplate x:DataType="models:Product">
+                        <DataTemplate x:DataType="models:MyProduct">
                             <Border Stroke="{DynamicResource BorderColor}" StrokeThickness="2" StrokeShape="RoundRectangle 5,5,5,5" Padding="7" >
                                 <Grid RowDefinitions="Auto,Auto" ColumnDefinitions="Auto,*,Auto">
                                     <Label Grid.Row="0" Grid.Column="0"
@@ -130,11 +130,103 @@
                 </CollectionView>
             </ScrollView>
 
-            <BoxView Grid.Row="2" Grid.Column="0" HeightRequest="3" Color="{DynamicResource DelimiterColor}" Margin="0,20,0,20"/>
+            <BoxView Grid.Row="2" Grid.Column="0" HeightRequest="3" Color="{DynamicResource DelimiterColor}" Margin="15,20,15,20"/>
 
-            <HorizontalStackLayout Grid.Row="3" Grid.Column="0" Padding="20">
-                <Button Text="Add New" Command="{Binding AddNewItemCommand}"/>
-            </HorizontalStackLayout>
+            <VerticalStackLayout Grid.Row="3" Grid.Column="0" Grid.RowSpan="2" 
+                 HorizontalOptions="Center" 
+                 VerticalOptions="Center"
+                 IsVisible="{Binding IsAvailableProductsLoaded, Converter={StaticResource InverseBooleanConverter}}">
+
+                <Label 
+                    Text="{markupExtensions:TranslateBinding Name=AvailableProductsLoading}" 
+                    FontAttributes="Bold" 
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"/>
+
+                <ActivityIndicator 
+                    IsRunning="true" 
+                    IsVisible="true" 
+                    VerticalOptions="CenterAndExpand" 
+                    HorizontalOptions="CenterAndExpand"/>
+
+            </VerticalStackLayout>
+
+
+            <VerticalStackLayout Grid.Row="3" Grid.Column="0" Grid.RowSpan="2" 
+                                 HorizontalOptions="Center" 
+                                 VerticalOptions="Center"
+                                 IsVisible="{Binding IsAvailableProductsLoaded}">
+
+                <Label 
+                    Text="{markupExtensions:TranslateBinding Name=AvailableProductsEmpty}" 
+                    FontAttributes="Bold" 
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center" 
+                    IsVisible="{Binding HasAvailableProducts, Converter={StaticResource InverseBooleanConverter}}"/>
+
+            </VerticalStackLayout>
+
+            <Label Grid.Row="3" Grid.Column="0"
+                   Text="{markupExtensions:TranslateBinding Name=AvailableProductsText}" 
+                   FontAttributes="Bold" 
+                   HorizontalOptions="Start"
+                   VerticalOptions="Center" 
+                   IsVisible="{Binding HasAvailableProducts}"/>
+
+            <ScrollView HeightRequest="500" Grid.Row="4" Grid.Column="0" Padding="0,0,0,0">
+                <CollectionView
+                    x:Name="AvailableProductsCollection"
+                    ItemsSource="{Binding AvailableProducts}"
+                    IsVisible="{Binding HasAvailableProducts}"
+                    IsGrouped="true">
+
+                    <CollectionView.GroupHeaderTemplate>
+                        <DataTemplate x:DataType="models:ProductGroup">
+                            <Border 
+                                StrokeThickness="2" 
+                                StrokeShape="RoundRectangle 5,5,0,0" 
+                                Padding="7"
+                                Stroke="{DynamicResource BorderColor}"
+                                BackgroundColor="{DynamicResource HeaderColor}">
+                                <Label
+                                       HorizontalOptions="Start"
+                                       Style="{StaticResource TextLabelStyle}"
+                                       Text="{Binding Name}"/>
+                            </Border>
+                        </DataTemplate>
+                    </CollectionView.GroupHeaderTemplate>
+
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="models:Product">
+                            <Border Padding="13,0,13,0" StrokeThickness="0">
+                                <Border 
+                                    Stroke="{DynamicResource BorderColor}" 
+                                    StrokeThickness="1"
+                                    Padding="5">
+                                    <Grid RowDefinitions="Auto" ColumnDefinitions="Auto,*" Padding="30,0,0,0">
+                                        <Label Grid.Row="0" Grid.Column="0"
+                                            VerticalOptions="Center"
+                                            HorizontalOptions="Start"
+                                            Style="{StaticResource TextLabelStyle}"
+                                            Text="{Binding Name}"/>
+
+                                        <ImageButton Grid.Row="0" Grid.Column="1"
+                                            Source="add.png"
+                                            HorizontalOptions="End"
+                                            WidthRequest="60"
+                                            HeightRequest="30"
+                                            Padding="0,5,0,5"
+                                            Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:InventoryPageViewModel}}, Path=AddMyProductCommand}"
+                                            CommandParameter="{Binding .}"/>
+
+                                    </Grid>
+                                </Border>
+                            </Border>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+
+                </CollectionView>
+            </ScrollView>
         </Grid>
     </ScrollView>
 

@@ -22,6 +22,7 @@ namespace MealPlannerClient.App
                 });
 
             builder.Services.AddTransient<IMyProductsService, MyProductsService>();
+            builder.Services.AddTransient<IProductsService, ProductsService>();
 
             builder.Services.AddTransient<SettingsPageViewModel>();
             builder.Services.AddTransient<SettingsPage>();

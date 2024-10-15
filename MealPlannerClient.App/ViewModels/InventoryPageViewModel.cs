@@ -10,6 +10,7 @@ using MealPlannerClient.App.Converters;
 using MealPlannerClient.App.Models;
 using MealPlannerClient.App.Enums;
 using MealPlannerClient.App.Interfaces.Services;
+using MealPlannerClient.App.Resources;
 
 namespace MealPlannerClient.App.ViewModels
 {
@@ -19,46 +20,55 @@ namespace MealPlannerClient.App.ViewModels
         private readonly Dictionary<ProductUnitOfMeasurement, double> _incrementValuesBasedOnMeasurementUnit;
 
         private readonly IMyProductsService _myProductsService;
+        private readonly IProductsService _productsService;
 
         [ObservableProperty]
         private bool _hasMyProducts = false;
 
         [ObservableProperty]
-        private bool _isBusy = false;
+        private bool _hasAvailableProducts = false;
+
+        [ObservableProperty]
+        private bool _isMyProductsBusy = false;
+
+        [ObservableProperty]
+        private bool _isAvailableProductsLoaded = false;
 
         [ObservableProperty]
         private bool _isDirty = false;
         
-        public ObservableCollection<Product> MyProducts { get; set; }
+        public ObservableCollection<MyProduct> MyProducts { get; set; }
 
-        public InventoryPageViewModel(IMyProductsService myProductsService)
+        private List<Product> _allAvailableProducts;
+        [ObservableProperty] 
+        private List<ProductGroup> _availableProducts;
+
+        public InventoryPageViewModel(IMyProductsService myProductsService, IProductsService productsService)
         {
             _myProductsService = myProductsService;
+            _productsService = productsService;
 
             _measurementUnitToIncrementConverter = new MeasurementUnitToIncrementConverter();
             _incrementValuesBasedOnMeasurementUnit = new Dictionary<ProductUnitOfMeasurement, double>();
 
-            MyProducts = new ObservableCollection<Product>();
+            MyProducts = new ObservableCollection<MyProduct>();
             MyProducts.CollectionChanged += MyProductsOnCollectionChanged;
+
+            _allAvailableProducts = new List<Product>();
+            _availableProducts = new List<ProductGroup>();
         }
 
         public async Task InitializeAsync()
         {
             IsDirty = false;
-            if (IsBusy)
-            {
-                return;
-            }
 
             try
             {
-                IsBusy = true;
-
-                await InitializeProductsAsync();
+                await InitializeMyProductsAsync();
+                await InitializeAvailableProductsAsync();
             }
             finally
             {
-                IsBusy = false;
                 IsDirty = false;
             }
         }
@@ -66,6 +76,7 @@ namespace MealPlannerClient.App.ViewModels
         public void CleanupAsync()
         {
             MyProducts.Clear();
+            IsMyProductsBusy = false;
         }
         
         [RelayCommand]
@@ -89,18 +100,27 @@ namespace MealPlannerClient.App.ViewModels
         }
 
         [RelayCommand]
-        public void AddNewItem()
+        public async Task AddMyProduct(Product product)
         {
-            MyProducts.Add(new Product()
+            if (MyProducts.Any(p => p.ProductId == product.Id))
             {
-                Id = "6",
-                CategoryId = "5",
-                CategoryName = "Category5AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                ProductId = "5",
-                ProductName = "Product5",
-                ProductUnitOfMeasurement = ProductUnitOfMeasurement.Milliliter,
-                Quantity = 1000
-            });
+                var message = (string)LocalizationResourceManager.Instance["MyProductAlreadyExists"];
+                await Toast.Make(message, ToastDuration.Short, 15).Show();
+            }
+            else
+            {
+                var myProduct = new MyProduct()
+                {
+                    Id = Guid.NewGuid().ToString(),
+                    ProductId = product.Id,
+                    ProductName = product.Name,
+                    CategoryId = product.CategoryId,
+                    CategoryName = product.CategoryName,
+                    ProductUnitOfMeasurement = product.UnitOfMeasurement,
+                    Quantity = 0
+                };
+                MyProducts.Add(myProduct);
+            }
         }
 
         [RelayCommand]
@@ -116,17 +136,23 @@ namespace MealPlannerClient.App.ViewModels
             IsDirty = true;
         }
 
-        private async Task InitializeProductsAsync()
+        private async Task InitializeMyProductsAsync()
         {
             try
             {
+                if (IsMyProductsBusy)
+                {
+                    return;
+                }
+
+                IsMyProductsBusy = true;
                 HasMyProducts = false;
 
-                var products = await _myProductsService.GetAllAsync();
+                var myProducts = await _myProductsService.GetAllAsync();
                 MyProducts.Clear();
-                if (products != null)
+                if (myProducts != null)
                 {
-                    foreach (var item in products)
+                    foreach (var item in myProducts)
                     {
                         MyProducts.Add(item);
                     }
@@ -134,7 +160,44 @@ namespace MealPlannerClient.App.ViewModels
             }
             catch (Exception ex)
             {
-                await LogAndShowError("Error loading products", ex);
+                await LogAndShowError("Error loading my products", ex);
+            }
+            finally
+            {
+                IsMyProductsBusy = false;
+            }
+        }
+
+        private async Task InitializeAvailableProductsAsync()
+        {
+            try
+            {
+                if (IsAvailableProductsLoaded)
+                {
+                    return;
+                }
+
+                var products = await _productsService.GetAllAsync();
+                if (products != null && products.Any())
+                {
+                    _allAvailableProducts = products;
+                    AvailableProducts = products
+                        .GroupBy(x => x.CategoryId)
+                        .Select(x => new ProductGroup(x.Key, x.First().CategoryName, x.ToList()))
+                        .ToList();
+
+                    HasAvailableProducts = true;
+                }
+                else
+                {
+                    HasAvailableProducts = false;
+                }
+
+                IsAvailableProductsLoaded = true;
+            }
+            catch (Exception ex)
+            {
+                await LogAndShowError("Error loading all available products", ex);
             }
         }
 

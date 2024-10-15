@@ -141,29 +141,6 @@
         <Setter Property="CornerRadius" Value="8" />
     </Style>
 
-    <Style TargetType="ImageButton">
-        <Setter Property="Opacity" Value="1" />
-        <Setter Property="BorderColor" Value="Transparent"/>
-        <Setter Property="BorderWidth" Value="0"/>
-        <Setter Property="CornerRadius" Value="0"/>
-        <Setter Property="MinimumHeightRequest" Value="44"/>
-        <Setter Property="MinimumWidthRequest" Value="44"/>
-        <Setter Property="VisualStateManager.VisualStateGroups">
-            <VisualStateGroupList>
-                <VisualStateGroup x:Name="CommonStates">
-                    <VisualState x:Name="Normal" />
-                    <VisualState x:Name="Disabled">
-                        <VisualState.Setters>
-                            <Setter Property="Opacity" Value="0.5" />
-                        </VisualState.Setters>
-                    </VisualState>
-                    <VisualState x:Name="PointerOver" />
-                </VisualStateGroup>
-            </VisualStateGroupList>
-        </Setter>
-    </Style>
-
-
     <Style TargetType="Span">
         <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}" />
     </Style>
@@ -475,6 +452,39 @@
         <Setter Property="BorderWidth" Value="1" />
         <Setter Property="BackgroundColor" Value="{DynamicResource DeleteButtonColor}"/>
     </Style>
+
+
+    <!-- ImageButton -->
+    <Style TargetType="ImageButton" x:Key="BaseImageButtonStyle">
+        <Setter Property="BackgroundColor" Value="{DynamicResource ButtonColor}"/>
+        <Setter Property="CornerRadius" Value="8"/>
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="Opacity" Value="1" />
+        <Setter Property="BorderColor" Value="{DynamicResource BorderColor}"/>
+        <Setter Property="BorderWidth" Value="2"/>
+        <Setter Property="MinimumHeightRequest" Value="20"/>
+        <Setter Property="MinimumWidthRequest" Value="20"/>
+        <Setter Property="VisualStateManager.VisualStateGroups">
+            <VisualStateGroupList>
+                <VisualStateGroup x:Name="CommonStates">
+                    <VisualState x:Name="Normal" />
+                    <VisualState x:Name="Disabled">
+                        <VisualState.Setters>
+                            <Setter Property="BackgroundColor" Value="{DynamicResource ButtonDisabledColor}" />
+                        </VisualState.Setters>
+                    </VisualState>
+                    <VisualState x:Name="PointerOver">
+                        <VisualState.Setters>
+                            <Setter Property="Opacity"
+                                    Value="0.8" />
+                        </VisualState.Setters>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateGroupList>
+        </Setter>
+    </Style>
+
+    <Style TargetType="ImageButton" BasedOn="{StaticResource BaseImageButtonStyle}" />
 
 
 

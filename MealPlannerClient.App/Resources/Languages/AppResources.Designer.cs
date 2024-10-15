@@ -61,6 +61,33 @@ namespace MealPlannerClient.App.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Products were not found.
+        /// </summary>
+        internal static string AvailableProductsEmpty {
+            get {
+                return ResourceManager.GetString("AvailableProductsEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Available products are loading....
+        /// </summary>
+        internal static string AvailableProductsLoading {
+            get {
+                return ResourceManager.GetString("AvailableProductsLoading", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Available products.
+        /// </summary>
+        internal static string AvailableProductsText {
+            get {
+                return ResourceManager.GetString("AvailableProductsText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Enter a number.
         /// </summary>
         internal static string EnterNumber {
@@ -88,7 +115,7 @@ namespace MealPlannerClient.App.Resources.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Your inventory is loading.
+        ///   Looks up a localized string similar to Your inventory is loading....
         /// </summary>
         internal static string InventoryLoading {
             get {
@@ -138,6 +165,15 @@ namespace MealPlannerClient.App.Resources.Languages {
         internal static string Milliliter {
             get {
                 return ResourceManager.GetString("Milliliter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Inventory already contains this product.
+        /// </summary>
+        internal static string MyProductAlreadyExists {
+            get {
+                return ResourceManager.GetString("MyProductAlreadyExists", resourceCulture);
             }
         }
         

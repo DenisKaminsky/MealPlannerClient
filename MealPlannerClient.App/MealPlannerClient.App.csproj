@@ -89,6 +89,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Images\add.png" />
 	  <None Remove="Resources\Images\box_black.png" />
 	  <None Remove="Resources\Images\box_white.png" />
 	  <None Remove="Resources\Images\delete_white.png" />

@@ -6,13 +6,13 @@ namespace MealPlannerClient.App.Services
 {
     public class MyProductsService: IMyProductsService
     {
-        public async Task<List<Product>> GetAllAsync()
+        public async Task<List<MyProduct>> GetAllAsync()
         {
-            await Task.Delay(20000);
+            await Task.Delay(1000);
 
-            var result = new List<Product>
+            var result = new List<MyProduct>
             {
-                new Product()
+                new MyProduct()
                 {
                     Id = "1",
                     CategoryId = "1",
@@ -22,7 +22,7 @@ namespace MealPlannerClient.App.Services
                     ProductUnitOfMeasurement = ProductUnitOfMeasurement.Milliliter,
                     Quantity = 1000
                 },
-                new Product()
+                new MyProduct()
                 {
                     Id = "2",
                     CategoryId = "2",
@@ -32,7 +32,7 @@ namespace MealPlannerClient.App.Services
                     ProductUnitOfMeasurement = ProductUnitOfMeasurement.Gram,
                     Quantity = 500
                 },
-                new Product()
+                new MyProduct()
                 {
                     Id = "3",
                     CategoryId = "3",
@@ -42,7 +42,7 @@ namespace MealPlannerClient.App.Services
                     ProductUnitOfMeasurement = ProductUnitOfMeasurement.Unit,
                     Quantity = 2
                 },
-                new Product()
+                new MyProduct()
                 {
                     Id = "4",
                     CategoryId = "4",
@@ -52,7 +52,7 @@ namespace MealPlannerClient.App.Services
                     ProductUnitOfMeasurement = ProductUnitOfMeasurement.Unit,
                     Quantity = 5
                 },
-                new Product()
+                new MyProduct()
                 {
                     Id = "5",
                     CategoryId = "5",

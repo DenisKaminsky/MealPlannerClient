@@ -1,23 +1,17 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
-using MealPlannerClient.App.Enums;
+﻿using MealPlannerClient.App.Enums;
 
 namespace MealPlannerClient.App.Models
 {
-    public partial class Product: CommunityToolkit.Mvvm.ComponentModel.ObservableObject
+    public partial class Product
     {
         public string Id { get; set; }
 
-        public string ProductId { get; set; }
+        public string Name { get; set; }
 
-        public string ProductName { get; set; }
-
-        public ProductUnitOfMeasurement ProductUnitOfMeasurement { get; set; }
+        public ProductUnitOfMeasurement UnitOfMeasurement { get; set; }
 
         public string CategoryId { get; set; }
 
         public string CategoryName { get; set; }
-        
-        [ObservableProperty] 
-        private double quantity;
     }
 }

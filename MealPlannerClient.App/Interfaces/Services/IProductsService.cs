@@ -2,8 +2,8 @@
 
 namespace MealPlannerClient.App.Interfaces.Services
 {
-    public interface IMyProductsService
+    public interface IProductsService
     {
-        Task<List<MyProduct>> GetAllAsync();
+        public Task<List<Product>> GetAllAsync();
     }
 }
