@@ -36,4 +36,6 @@
     <Color x:Key="InputTextColor">Green</Color>
     <Color x:Key="PlaceholderTextColor">#073614</Color>
 
+    <Color x:Key="ListGroupHeaderColor">Green</Color>
+
 </ResourceDictionary>

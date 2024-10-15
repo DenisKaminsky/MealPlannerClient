@@ -131,12 +131,25 @@ namespace MealPlannerClient.App.ViewModels
         }
 
         [RelayCommand]
+        public async Task SaveMyProducts()
+        {
+            IsMyProductsBusy = true;
+            await _myProductsService.SaveAsync(MyProducts.ToList());
+
+            IsMyProductsBusy = false;
+            IsDirty = false;
+
+            var successMessage = (string)LocalizationResourceManager.Instance["MyProductsSaved"];
+            await Toast.Make(successMessage, ToastDuration.Short, 15).Show();
+        }
+
+        [RelayCommand]
         public void PerformSearch(string searchString)
         {
             AvailableProducts = _allAvailableProducts
                 .Where(x => x.Name.Contains(searchString, StringComparison.InvariantCultureIgnoreCase))
                 .GroupBy(x => x.CategoryId)
-                .Select(x => new ProductGroup(x.Key, x.First().CategoryName, x.ToList()))
+                .Select(x => new ProductGroup(x.Key, x.First().CategoryName, x.OrderBy(y => y.Name).ToList()))
                 .ToList();
         }
 
@@ -193,7 +206,7 @@ namespace MealPlannerClient.App.ViewModels
                     _allAvailableProducts = products;
                     AvailableProducts = products
                         .GroupBy(x => x.CategoryId)
-                        .Select(x => new ProductGroup(x.Key, x.First().CategoryName, x.ToList()))
+                        .Select(x => new ProductGroup(x.Key, x.First().CategoryName, x.OrderBy(y => y.Name).ToList()))
                         .ToList();
 
                     HasAvailableProducts = true;

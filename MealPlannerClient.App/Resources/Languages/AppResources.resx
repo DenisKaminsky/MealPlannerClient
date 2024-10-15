@@ -156,8 +156,14 @@
   <data name="MyProductAlreadyExists" xml:space="preserve">
     <value>Inventory already contains this product</value>
   </data>
+  <data name="MyProductsSaved" xml:space="preserve">
+    <value>Changes saved!</value>
+  </data>
   <data name="MyProductsText" xml:space="preserve">
     <value>My Products</value>
+  </data>
+  <data name="SaveButtonText" xml:space="preserve">
+    <value>Save</value>
   </data>
   <data name="SearchBarPlaceholder" xml:space="preserve">
     <value>Type name of the product...</value>

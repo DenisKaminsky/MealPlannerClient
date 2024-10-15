@@ -156,8 +156,14 @@
   <data name="MyProductAlreadyExists" xml:space="preserve">
     <value>Данный продукт уже есть в инвентаре</value>
   </data>
+  <data name="MyProductsSaved" xml:space="preserve">
+    <value>Изменения сохранены!</value>
+  </data>
   <data name="MyProductsText" xml:space="preserve">
     <value>Мои Продукты</value>
+  </data>
+  <data name="SaveButtonText" xml:space="preserve">
+    <value>Сохранить</value>
   </data>
   <data name="SearchBarPlaceholder" xml:space="preserve">
     <value>Введите название продукта...</value>

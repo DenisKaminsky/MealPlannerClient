@@ -35,4 +35,6 @@
     <Color x:Key="HelpTextColor">Navy</Color>
     <Color x:Key="InputTextColor">Black</Color>
     <Color x:Key="PlaceholderTextColor">#bdbdbd</Color>
+
+    <Color x:Key="ListGroupHeaderColor">White</Color>
 </ResourceDictionary>

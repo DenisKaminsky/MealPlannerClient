@@ -66,5 +66,11 @@ namespace MealPlannerClient.App.Services
 
             return result;
         }
+
+        public async Task SaveAsync(List<MyProduct> myProducts)
+        {
+            var a = 1;
+            await Task.Delay(3000);
+        }
     }
 }

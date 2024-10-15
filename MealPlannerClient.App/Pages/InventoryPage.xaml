@@ -14,6 +14,7 @@
     <ContentPage.Resources>
         <converters:InverseBooleanConverter x:Key="InverseBooleanConverter" />
         <converters:MeasurementUnitToTranslatedStringConverter x:Key="MeasurementUnitToTranslatedStringConverter" />
+        <converters:AllTrueMultiConverter x:Key="AllTrueConverter" />
     </ContentPage.Resources>
 
     <ScrollView>
@@ -31,6 +32,7 @@
                     VerticalOptions="Center"/>
 
                 <ActivityIndicator 
+                    Color="{DynamicResource TextColor}"
                     IsRunning="true" 
                     IsVisible="true" 
                     VerticalOptions="CenterAndExpand" 
@@ -53,19 +55,43 @@
 
             </VerticalStackLayout>
 
-            <Label Grid.Row="0" Grid.Column="0"
-                Text="{markupExtensions:TranslateBinding Name=MyProductsText}" 
-                FontAttributes="Bold" 
-                HorizontalOptions="Start"
-                VerticalOptions="Center" 
-                IsVisible="{Binding HasMyProducts}"/>
+            <Grid Grid.Row="0" Grid.Column="0" 
+                  RowDefinitions="Auto" ColumnDefinitions="*,*"
+                  Padding="0,0,20,0">
+
+                <Grid.IsVisible>
+                    <MultiBinding Converter="{StaticResource AllTrueConverter}">
+                        <Binding Path="HasMyProducts" />
+                        <Binding Path="IsMyProductsBusy" Converter="{StaticResource InverseBooleanConverter}"/>
+                    </MultiBinding>
+                </Grid.IsVisible>
+
+                <Label Grid.Row="0" Grid.Column="0"
+                       Text="{markupExtensions:TranslateBinding Name=MyProductsText}" 
+                       FontAttributes="Bold" 
+                       HorizontalOptions="Start"
+                       VerticalOptions="Center" />
+
+                <Button Grid.Row="0" Grid.Column="1"
+                        HorizontalOptions="End"
+                        ImageSource="save_white.png"
+                        Text="{markupExtensions:TranslateBinding Name=SaveButtonText}"
+                        Command="{Binding SaveMyProductsCommand}"
+                        IsEnabled="{Binding IsDirty}"/>
+            </Grid>
 
             <ScrollView HeightRequest="385" Grid.Row="1" Grid.Column="0" Padding="0,0,20,0">
                 <CollectionView
                     HorizontalOptions="Start"
                     SelectionMode="None" 
-                    ItemsSource="{Binding MyProducts, Mode=TwoWay}" 
-                    IsVisible="{Binding HasMyProducts}">
+                    ItemsSource="{Binding MyProducts, Mode=TwoWay}">
+
+                    <CollectionView.IsVisible>
+                        <MultiBinding Converter="{StaticResource AllTrueConverter}">
+                            <Binding Path="HasMyProducts" />
+                            <Binding Path="IsMyProductsBusy" Converter="{StaticResource InverseBooleanConverter}"/>
+                        </MultiBinding>
+                    </CollectionView.IsVisible>
 
                     <CollectionView.ItemsLayout>
                         <LinearItemsLayout Orientation="Vertical" ItemSpacing="3"/>
@@ -200,6 +226,7 @@
                                 <Label
                                        HorizontalOptions="Start"
                                        Style="{StaticResource TextLabelStyle}"
+                                       TextColor="{DynamicResource ListGroupHeaderColor}"
                                        Text="{Binding Name}"/>
                             </Border>
                         </DataTemplate>

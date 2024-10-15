@@ -178,11 +178,29 @@ namespace MealPlannerClient.App.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Changes saved!.
+        /// </summary>
+        internal static string MyProductsSaved {
+            get {
+                return ResourceManager.GetString("MyProductsSaved", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to My Products.
         /// </summary>
         internal static string MyProductsText {
             get {
                 return ResourceManager.GetString("MyProductsText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save.
+        /// </summary>
+        internal static string SaveButtonText {
+            get {
+                return ResourceManager.GetString("SaveButtonText", resourceCulture);
             }
         }
         
