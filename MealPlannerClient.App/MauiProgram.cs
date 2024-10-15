@@ -1,5 +1,7 @@
 ﻿using CommunityToolkit.Maui;
+using MealPlannerClient.App.Interfaces.Services;
 using MealPlannerClient.App.Pages;
+using MealPlannerClient.App.Services;
 using MealPlannerClient.App.ViewModels;
 using Microsoft.Extensions.Logging;
 
@@ -18,6 +20,8 @@ namespace MealPlannerClient.App
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
+
+            builder.Services.AddTransient<IMyProductsService, MyProductsService>();
 
             builder.Services.AddTransient<SettingsPageViewModel>();
             builder.Services.AddTransient<SettingsPage>();

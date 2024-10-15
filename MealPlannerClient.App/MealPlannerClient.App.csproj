@@ -91,6 +91,7 @@
 	<ItemGroup>
 	  <None Remove="Resources\Images\box_black.png" />
 	  <None Remove="Resources\Images\box_white.png" />
+	  <None Remove="Resources\Images\delete_white.png" />
 	  <None Remove="Resources\Images\font_big_white.png" />
 	  <None Remove="Resources\Images\font_mid_white.png" />
 	  <None Remove="Resources\Images\font_small_white.png" />
@@ -124,9 +125,6 @@
 	  <Compile Update="Pages\SettingsPage.xaml.cs">
 	    <DependentUpon>SettingsPage.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="Pages\Test\TestPage.xaml.cs">
-	    <DependentUpon>TestPage.xaml</DependentUpon>
-	  </Compile>
 	  <Compile Update="Resources\Languages\AppResources.Designer.cs">
 	    <DesignTime>True</DesignTime>
 	    <AutoGen>True</AutoGen>
@@ -155,12 +153,6 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\RecipesPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Pages\Test\TestPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Pages\Test\TestPAgeGrid.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Resources\Styles\MealPlannerStylesBase.xaml">

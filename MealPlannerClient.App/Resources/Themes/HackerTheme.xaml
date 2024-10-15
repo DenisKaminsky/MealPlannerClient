@@ -11,13 +11,13 @@
 
     <Color x:Key="MenuButtonColor">Black</Color>
     <Color x:Key="MenuButtonTextColor">Green</Color>
-    <Color x:Key="MenuButtonDisabledColor">#C8C8C8</Color>
+    <Color x:Key="MenuButtonDisabledColor">#212121</Color>
     <Color x:Key="MenuButtonHoverColor">#212121</Color>
     <Color x:Key="MenuButtonClickColor">Green</Color>
 
     <Color x:Key="ButtonColor">Black</Color>
     <Color x:Key="ButtonTextColor">Green</Color>
-    <Color x:Key="ButtonDisabledColor">#C8C8C8</Color>
+    <Color x:Key="ButtonDisabledColor">#212121</Color>
     <Color x:Key="ButtonHoverColor">#212121</Color>
     <Color x:Key="ButtonClickColor">Green</Color>
 
