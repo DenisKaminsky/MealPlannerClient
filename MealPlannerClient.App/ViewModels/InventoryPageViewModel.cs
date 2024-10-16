@@ -16,6 +16,8 @@ namespace MealPlannerClient.App.ViewModels
 {
     public partial class InventoryPageViewModel : CommunityToolkit.Mvvm.ComponentModel.ObservableObject
     {
+        private const int AVAILABLE_PRODUCTS_PAGE_SIZE = 10;
+
         private readonly MeasurementUnitToIncrementConverter _measurementUnitToIncrementConverter;
         private readonly Dictionary<ProductUnitOfMeasurement, double> _incrementValuesBasedOnMeasurementUnit;
 
@@ -26,13 +28,27 @@ namespace MealPlannerClient.App.ViewModels
         private bool _hasMyProducts = false;
 
         [ObservableProperty]
-        private bool _hasAvailableProducts = false;
-
-        [ObservableProperty]
         private bool _isMyProductsBusy = false;
 
         [ObservableProperty]
+        private bool _hasAvailableProducts = false;
+
+        [ObservableProperty]
         private bool _isAvailableProductsLoaded = false;
+        
+        private string _availableProductsSearchString = String.Empty;
+
+        [ObservableProperty]
+        private int _availableProductsPageNumber = 0;
+
+        [ObservableProperty]
+        private int _availableProductsTotalPages = 0;
+
+        [ObservableProperty]
+        private bool _availableProductsIsFirstPage = true;
+
+        [ObservableProperty]
+        private bool _availableProductsIsLastPage = true;
 
         [ObservableProperty]
         private bool _isDirty = false;
@@ -64,8 +80,10 @@ namespace MealPlannerClient.App.ViewModels
 
             try
             {
-                await InitializeMyProductsAsync();
-                await InitializeAvailableProductsAsync();
+                await Task.WhenAll(
+                    InitializeMyProductsAsync(),
+                    InitializeAvailableProductsAsync()
+                );
             }
             finally
             {
@@ -80,7 +98,7 @@ namespace MealPlannerClient.App.ViewModels
         }
         
         [RelayCommand]
-        public void IncrementMyProductQuantity(string myProductId)
+        private void IncrementMyProductQuantity(string myProductId)
         {
             IsDirty = true;
 
@@ -90,7 +108,7 @@ namespace MealPlannerClient.App.ViewModels
         }
 
         [RelayCommand]
-        public void DecrementMyProductQuantity(string myProductId)
+        private void DecrementMyProductQuantity(string myProductId)
         {
             IsDirty = true;
 
@@ -100,7 +118,7 @@ namespace MealPlannerClient.App.ViewModels
         }
 
         [RelayCommand]
-        public async Task AddMyProduct(Product product)
+        private async Task AddMyProduct(Product product)
         {
             if (MyProducts.Any(p => p.ProductId == product.Id))
             {
@@ -124,14 +142,14 @@ namespace MealPlannerClient.App.ViewModels
         }
 
         [RelayCommand]
-        public void RemoveMyProduct(string myProductId)
+        private void RemoveMyProduct(string myProductId)
         {
             var item = MyProducts.First(p => p.Id == myProductId);
             MyProducts.Remove(item);
         }
 
         [RelayCommand]
-        public async Task SaveMyProducts()
+        private async Task SaveMyProducts()
         {
             IsMyProductsBusy = true;
             await _myProductsService.SaveAsync(MyProducts.ToList());
@@ -144,16 +162,59 @@ namespace MealPlannerClient.App.ViewModels
         }
 
         [RelayCommand]
-        public void PerformSearch(string searchString)
+        private void PerformAvailableProductsSearch(string searchString)
         {
-            var filtered = _allAvailableProducts
-                .Where(x => x.Name.Contains(searchString, StringComparison.InvariantCultureIgnoreCase))
-                .Take(10)
-                .GroupBy(x => x.CategoryId)
-                .Select(x => new ProductGroup(x.Key, x.First().CategoryName, x.OrderBy(y => y.Name).ToList()))
+            _availableProductsSearchString = searchString ?? string.Empty;
+            AvailableProductsPageNumber = 1;
+
+            FilterAvailableProducts();
+        }
+
+        [RelayCommand]
+        private void GoToNextAvailableProductsPage()
+        {
+            if (AvailableProductsIsLastPage)
+                return;
+
+            AvailableProductsPageNumber++;
+
+            FilterAvailableProducts();
+        }
+
+        [RelayCommand]
+        private void GoToPreviousAvailableProductsPage()
+        {
+            if (AvailableProductsIsFirstPage)
+                return;
+
+            AvailableProductsPageNumber--;
+
+            FilterAvailableProducts();
+        }
+
+        private void FilterAvailableProducts()
+        {
+            AvailableProductsIsFirstPage = AvailableProductsPageNumber == 1;
+
+            var queryable = string.IsNullOrWhiteSpace(_availableProductsSearchString)
+                ? _allAvailableProducts.AsQueryable()
+                : _allAvailableProducts.Where(x =>
+                    x.Name.Contains(_availableProductsSearchString, StringComparison.InvariantCultureIgnoreCase));
+
+            var filtered = queryable.ToList();
+
+            AvailableProductsTotalPages = (int)Math.Ceiling((double)filtered.Count / AVAILABLE_PRODUCTS_PAGE_SIZE);
+            AvailableProductsIsLastPage = AvailableProductsTotalPages == AvailableProductsPageNumber;
+
+            var filteredAndPaged = filtered
+                .Skip(AVAILABLE_PRODUCTS_PAGE_SIZE * (AvailableProductsPageNumber - 1))
+                .Take(AVAILABLE_PRODUCTS_PAGE_SIZE)
                 .ToList();
 
-            AvailableProducts = filtered;
+            AvailableProducts = filteredAndPaged
+                .GroupBy(x => x.CategoryId)
+                .Select(x => new ProductGroup(x.Key, x.First().CategoryName, x.OrderBy(y => y.Name).ToList()))
+                .ToList(); ;
         }
 
         private void MyProductsOnCollectionChanged(object? sender, NotifyCollectionChangedEventArgs e)
@@ -207,10 +268,8 @@ namespace MealPlannerClient.App.ViewModels
                 if (products != null && products.Any())
                 {
                     _allAvailableProducts = products;
-                    AvailableProducts = products
-                        .GroupBy(x => x.CategoryId)
-                        .Select(x => new ProductGroup(x.Key, x.First().CategoryName, x.OrderBy(y => y.Name).ToList()))
-                        .ToList();
+                    AvailableProductsPageNumber = 1;
+                    FilterAvailableProducts();
 
                     HasAvailableProducts = true;
                 }

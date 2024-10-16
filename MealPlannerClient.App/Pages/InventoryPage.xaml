@@ -18,7 +18,7 @@
     </ContentPage.Resources>
 
     <ScrollView>
-        <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto" ColumnDefinitions="*">
+        <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,*" ColumnDefinitions="*">
 
             <VerticalStackLayout Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" 
                 HorizontalOptions="Center" 
@@ -203,12 +203,12 @@
                 <Border Stroke="{DynamicResource BorderColor}" StrokeThickness="2" StrokeShape="RoundRectangle 5,5,5,5">
                     <SearchBar x:Name="SearchBar"
                         Placeholder="{markupExtensions:TranslateBinding Name=SearchBarPlaceholder}"
-                        SearchCommand="{Binding PerformSearchCommand}"
+                        SearchCommand="{Binding PerformAvailableProductsSearchCommand}"
                         SearchCommandParameter="{Binding Text, Source={x:Reference SearchBar}}"/>
                 </Border>
             </VerticalStackLayout>
 
-            <ScrollView HeightRequest="500" Grid.Row="4" Grid.Column="0" Padding="0,0,0,0">
+            <ScrollView HeightRequest="430" Grid.Row="4" Grid.Column="0" Padding="0,0,0,0">
                 <CollectionView
                     x:Name="AvailableProductsCollection"
                     ItemsSource="{Binding AvailableProducts}"
@@ -263,6 +263,43 @@
 
                 </CollectionView>
             </ScrollView>
+
+            <HorizontalStackLayout Grid.Row="5" Grid.Column="0"
+                                   Spacing="5"
+                VerticalOptions="End"
+                Margin="13,10,13,0"
+                IsVisible="{Binding HasAvailableProducts}">
+
+                <Button 
+                    Text="&lt;" 
+                    WidthRequest="50"
+                    IsEnabled="{Binding AvailableProductsIsFirstPage, Converter={StaticResource InverseBooleanConverter}}"
+                    Command="{Binding GoToPreviousAvailableProductsPageCommand}"/>
+
+                <Border Stroke="{DynamicResource BorderColor}" StrokeThickness="1" StrokeShape="RoundRectangle 5,5,5,5" WidthRequest="250">
+                    <Entry 
+                        IsReadOnly="True"
+                        HorizontalTextAlignment="Center"
+                        VerticalTextAlignment="Center">
+                        <Entry.Text>
+                            <MultiBinding StringFormat="{}{0} {1} {2} {3}">
+                                <markupExtensions:TranslateBinding Name="PagerPage"/>
+                                <Binding Path="AvailableProductsPageNumber" Mode="OneWay" />
+                                <markupExtensions:TranslateBinding Name="PagerPageOf"/>
+                                <Binding Path="AvailableProductsTotalPages" Mode="OneWay" />
+                            </MultiBinding>
+                        </Entry.Text>
+                    </Entry>
+                </Border>
+
+                <Button 
+                    Text="&gt;" 
+                    WidthRequest="50"
+                    IsEnabled="{Binding AvailableProductsIsLastPage, Converter={StaticResource InverseBooleanConverter}}"
+                    Command="{Binding GoToNextAvailableProductsPageCommand}"/>
+
+            </HorizontalStackLayout>
+
         </Grid>
     </ScrollView>
 

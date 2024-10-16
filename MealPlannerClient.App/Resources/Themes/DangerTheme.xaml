@@ -16,7 +16,7 @@
 
     <Color x:Key="ButtonColor">OrangeRed</Color>
     <Color x:Key="ButtonTextColor">Black</Color>
-    <Color x:Key="ButtonDisabledColor">#212121</Color>
+    <Color x:Key="ButtonDisabledColor">Coral</Color>
     <Color x:Key="ButtonHoverColor">Coral</Color>
     <Color x:Key="ButtonClickColor">Black</Color>
     <Color x:Key="DeleteButtonColor">Black</Color>

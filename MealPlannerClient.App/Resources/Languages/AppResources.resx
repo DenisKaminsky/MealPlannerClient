@@ -162,6 +162,12 @@
   <data name="MyProductsText" xml:space="preserve">
     <value>My Products</value>
   </data>
+  <data name="PagerPage" xml:space="preserve">
+    <value>Page</value>
+  </data>
+  <data name="PagerPageOf" xml:space="preserve">
+    <value>of</value>
+  </data>
   <data name="SaveButtonText" xml:space="preserve">
     <value>Save</value>
   </data>

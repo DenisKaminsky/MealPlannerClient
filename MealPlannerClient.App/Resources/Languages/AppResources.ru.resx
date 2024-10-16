@@ -162,6 +162,12 @@
   <data name="MyProductsText" xml:space="preserve">
     <value>Мои Продукты</value>
   </data>
+  <data name="PagerPage" xml:space="preserve">
+    <value>Страница</value>
+  </data>
+  <data name="PagerPageOf" xml:space="preserve">
+    <value>из</value>
+  </data>
   <data name="SaveButtonText" xml:space="preserve">
     <value>Сохранить</value>
   </data>
