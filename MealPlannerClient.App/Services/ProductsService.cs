@@ -1,12 +1,43 @@
-﻿using MealPlannerClient.App.Enums;
+﻿using System.Diagnostics;
+using MealPlannerClient.App.Enums;
 using MealPlannerClient.App.Interfaces.Services;
+using MealPlannerClient.App.Interfaces.Web;
 using MealPlannerClient.App.Models;
 
 namespace MealPlannerClient.App.Services
 {
     public class ProductsService : IProductsService
     {
+        private readonly IProductsWebService _productsWebService;
+
+        public ProductsService(IProductsWebService productsWebService)
+        {
+            _productsWebService = productsWebService;
+        }
+
         public async Task<List<Product>> GetAllAsync()
+        {
+            if (Connectivity.Current.NetworkAccess == NetworkAccess.Internet)
+            {
+                try
+                {
+                    return await GetAllFromBackend();
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine(ex.Message);
+                }
+            }
+
+            return await GetAllFromLocalStorage();
+        }
+
+        private async Task<List<Product>> GetAllFromBackend()
+        {
+            return await _productsWebService.GetAllAsync();
+        }
+
+        private async Task<List<Product>> GetAllFromLocalStorage()
         {
             await Task.Delay(1000);
 

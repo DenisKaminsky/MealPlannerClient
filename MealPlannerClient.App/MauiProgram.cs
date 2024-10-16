@@ -3,7 +3,11 @@ using MealPlannerClient.App.Interfaces.Services;
 using MealPlannerClient.App.Pages;
 using MealPlannerClient.App.Services;
 using MealPlannerClient.App.ViewModels;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using System.Reflection;
+using MealPlannerClient.App.Interfaces.Web;
+using MealPlannerClient.App.Services.Web;
 
 namespace MealPlannerClient.App
 {
@@ -20,6 +24,14 @@ namespace MealPlannerClient.App
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
+            
+            using var configStream = Assembly
+                .GetExecutingAssembly()
+                .GetManifestResourceStream("MealPlannerClient.App.appsettings.json");
+            var config = new ConfigurationBuilder()
+                .AddJsonStream(configStream!)
+                .Build();
+            builder.Configuration.AddConfiguration(config);
 
             builder.Services.AddTransient<IMyProductsService, MyProductsService>();
             builder.Services.AddTransient<IProductsService, ProductsService>();
@@ -29,6 +41,14 @@ namespace MealPlannerClient.App
 
             builder.Services.AddTransient<InventoryPageViewModel>();
             builder.Services.AddTransient<InventoryPage>();
+            
+            builder.Services.AddSingleton(_ => new BackendHttpClient
+            {
+                BaseAddress = new Uri(config["Backend:BaseURI"]!),
+                DefaultRequestHeaders = { { "Accept", "application/json" } }
+            });
+
+            builder.Services.AddSingleton<IProductsWebService, ProductsWebService>();
 
 #if DEBUG
             builder.Logging.AddDebug();

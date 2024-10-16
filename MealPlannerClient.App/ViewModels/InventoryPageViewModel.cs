@@ -146,11 +146,14 @@ namespace MealPlannerClient.App.ViewModels
         [RelayCommand]
         public void PerformSearch(string searchString)
         {
-            AvailableProducts = _allAvailableProducts
+            var filtered = _allAvailableProducts
                 .Where(x => x.Name.Contains(searchString, StringComparison.InvariantCultureIgnoreCase))
+                .Take(10)
                 .GroupBy(x => x.CategoryId)
                 .Select(x => new ProductGroup(x.Key, x.First().CategoryName, x.OrderBy(y => y.Name).ToList()))
                 .ToList();
+
+            AvailableProducts = filtered;
         }
 
         private void MyProductsOnCollectionChanged(object? sender, NotifyCollectionChangedEventArgs e)
