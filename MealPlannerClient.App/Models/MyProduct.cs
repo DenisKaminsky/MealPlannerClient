@@ -1,5 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using MealPlannerClient.App.Enums;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 namespace MealPlannerClient.App.Models
 {
@@ -11,6 +13,7 @@ namespace MealPlannerClient.App.Models
 
         public string ProductName { get; set; }
 
+        [JsonConverter(typeof(StringEnumConverter))]
         public ProductUnitOfMeasurement ProductUnitOfMeasurement { get; set; }
 
         public string CategoryId { get; set; }

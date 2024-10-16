@@ -49,6 +49,7 @@ namespace MealPlannerClient.App
             });
 
             builder.Services.AddSingleton<IProductsWebService, ProductsWebService>();
+            builder.Services.AddSingleton<IMyProductsWebService, MyProductsWebService>();
 
 #if DEBUG
             builder.Logging.AddDebug();

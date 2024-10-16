@@ -1,12 +1,67 @@
-﻿using MealPlannerClient.App.Enums;
+﻿using System.Diagnostics;
+using MealPlannerClient.App.DTO;
+using MealPlannerClient.App.Enums;
 using MealPlannerClient.App.Interfaces.Services;
+using MealPlannerClient.App.Interfaces.Web;
 using MealPlannerClient.App.Models;
 
 namespace MealPlannerClient.App.Services
 {
-    public class MyProductsService: IMyProductsService
+    public class MyProductsService : IMyProductsService
     {
+        private readonly IMyProductsWebService _myProductsWebService;
+
+        public MyProductsService(IMyProductsWebService myProductsWebService)
+        {
+            _myProductsWebService = myProductsWebService;
+        }
+
         public async Task<List<MyProduct>> GetAllAsync()
+        {
+            if (Connectivity.Current.NetworkAccess == NetworkAccess.Internet)
+            {
+                try
+                {
+                    return await GetAllFromBackend();
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine(ex.Message);
+                }
+            }
+
+            return await GetAllFromLocalStorage();
+        }
+
+        public async Task SaveAsync(List<MyProduct> myProducts)
+        {
+            var mappedData = myProducts.Select(x => new SaveMyProductDTO()
+            {
+                ProductId = x.ProductId,
+                Quantity = x.Quantity
+            }).ToList();
+
+            if (Connectivity.Current.NetworkAccess == NetworkAccess.Internet)
+            {
+                try
+                {
+                    await SaveToBackend(mappedData);
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine(ex.Message);
+                }
+            }
+
+            await SaveToLocalStorage(mappedData);
+        }
+
+        private async Task<List<MyProduct>> GetAllFromBackend()
+        {
+            return await _myProductsWebService.GetAllAsync();
+        }
+
+        private async Task<List<MyProduct>> GetAllFromLocalStorage()
         {
             await Task.Delay(1000);
 
@@ -67,10 +122,14 @@ namespace MealPlannerClient.App.Services
             return result;
         }
 
-        public async Task SaveAsync(List<MyProduct> myProducts)
+        private async Task SaveToBackend(List<SaveMyProductDTO> myProducts)
         {
-            var a = 1;
-            await Task.Delay(3000);
+            await _myProductsWebService.SaveAsync(myProducts);
+        }
+
+        private async Task SaveToLocalStorage(List<SaveMyProductDTO> myProducts)
+        {
+            await Task.Delay(2000);
         }
     }
 }
