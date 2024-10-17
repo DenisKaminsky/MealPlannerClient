@@ -50,7 +50,7 @@
 
 
                     <!-- Content Section-->
-                    <ContentPresenter Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="2" Padding="20,20,20,7" BackgroundColor="{DynamicResource ContentAreaBackgroundColor}"/>
+                    <ContentPresenter Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="2" Padding="20,7,20,7" BackgroundColor="{DynamicResource ContentAreaBackgroundColor}"/>
 
 
                     <!-- Delimiter -->
