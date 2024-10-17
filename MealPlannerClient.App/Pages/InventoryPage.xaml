@@ -5,6 +5,7 @@
              xmlns:viewModels="clr-namespace:MealPlannerClient.App.ViewModels"
              xmlns:models="clr-namespace:MealPlannerClient.App.Models"
              xmlns:converters="clr-namespace:MealPlannerClient.App.Converters"
+             xmlns:behaviors="using:MealPlannerClient.App.Behaviors"
              x:Class="MealPlannerClient.App.Pages.InventoryPage"
              x:DataType="viewModels:InventoryPageViewModel"
              Shell.NavBarIsVisible="False"
@@ -118,7 +119,11 @@
                                                 Keyboard="Numeric"
                                                 VerticalTextAlignment="Center"
                                                 Placeholder="{markupExtensions:TranslateBinding Name=EnterNumber}"
-                                                Text="{Binding Quantity, Mode=TwoWay}"/>
+                                                Text="{Binding Quantity, Mode=TwoWay}">
+                                                <Entry.Behaviors>
+                                                    <behaviors:PositiveNumberValidationBehavior/>
+                                                </Entry.Behaviors>
+                                            </Entry>
                                         </Border>
 
                                         <Label 
