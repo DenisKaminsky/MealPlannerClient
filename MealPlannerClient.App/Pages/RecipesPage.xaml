@@ -41,78 +41,77 @@
             WidthRequest="{Binding Width, Source={RelativeSource AncestorType={x:Type ContentPage}}, Converter={StaticResource PercentageConverter}, ConverterParameter='70'}" 
             HeightRequest="{Binding Height, Source={RelativeSource AncestorType={x:Type ContentPage}}, Converter={StaticResource PercentageConverter}, ConverterParameter='70'}">
 
+            <sfPopup:SfPopup.PopupStyle>
+                <sfPopup:PopupStyle Stroke="{DynamicResource BorderColor}"
+                    StrokeThickness="2"
+                    CornerRadius="15" />
+            </sfPopup:SfPopup.PopupStyle>
+
             <sfPopup:SfPopup.HeaderTemplate>
                 <DataTemplate >
-                    <Border 
-                        StrokeThickness="1"
-                        StrokeShape="RoundRectangle 25,25,0,0">
-                        <Grid RowDefinitions="*"
+                    <Grid RowDefinitions="*"
                               BackgroundColor="{DynamicResource HeaderColor}">
-                            <Label Grid.Row="0"
+                        <Label Grid.Row="0"
                                 Text="Create new Recipe" 
                                 VerticalOptions="Center"
                                 HorizontalOptions="Center"
                                 Style="{StaticResource HeaderLabelStyle}"/>
-                        </Grid>
-                    </Border>
+                    </Grid>
                 </DataTemplate>
             </sfPopup:SfPopup.HeaderTemplate>
             
             <sfPopup:SfPopup.ContentTemplate>
                 <DataTemplate>
-                    <Border 
-                        StrokeThickness="1"
-                        StrokeShape="RoundRectangle 0,0,25,25">
-                            <ScrollView BackgroundColor="{DynamicResource ContentAreaBackgroundColor}">
-                                <VerticalStackLayout Spacing="10" Padding="30">
-                                    <Label 
+                    <ScrollView BackgroundColor="{DynamicResource ContentAreaBackgroundColor}">
+                        <VerticalStackLayout Spacing="10" Padding="30">
+                            <Label 
                                         Text="Name" 
                                         Style="{StaticResource TextLabelStyle}"
                                         FontAttributes="Bold" 
                                         HorizontalOptions="Start"/>
 
-                                    <Border StrokeThickness="1" StrokeShape="RoundRectangle 5,5,5,5">
-                                        <Entry Text="{Binding NewRecipe.Name}" HeightRequest="35"/>
-                                    </Border>
+                            <Border StrokeThickness="1" StrokeShape="RoundRectangle 5,5,5,5">
+                                <Entry Text="{Binding NewRecipe.Name}" HeightRequest="35"/>
+                            </Border>
 
-                                    <Label 
+                            <Label 
                                         Text="Preparation Steps" 
                                         Style="{StaticResource TextLabelStyle}"
                                         FontAttributes="Bold" 
                                         HorizontalOptions="Start"/>
 
-                                    <Border StrokeThickness="1" StrokeShape="RoundRectangle 5,5,5,5">
-                                        <Editor Text="{Binding NewRecipe.PreparationSteps}" VerticalOptions="FillAndExpand" AutoSize="TextChanges" MinimumHeightRequest="70"/>
-                                    </Border>
-                                    
-                                    <Label 
+                            <Border StrokeThickness="1" StrokeShape="RoundRectangle 5,5,5,5">
+                                <Editor Text="{Binding NewRecipe.PreparationSteps}" VerticalOptions="FillAndExpand" AutoSize="TextChanges" MinimumHeightRequest="70"/>
+                            </Border>
+
+                            <Label 
                                         Text="Ingredients" 
                                         Style="{StaticResource TextLabelStyle}"
                                         FontAttributes="Bold" 
                                         HorizontalOptions="Start"/>
 
-                                    <Border StrokeThickness="1" StrokeShape="RoundRectangle 5,5,5,5">
-                                        <Editor Text="{Binding NewRecipe.Ingredients}" VerticalOptions="FillAndExpand" AutoSize="TextChanges" MinimumHeightRequest="70"/>
-                                    </Border>
+                            <Border StrokeThickness="1" StrokeShape="RoundRectangle 5,5,5,5">
+                                <Editor Text="{Binding NewRecipe.Ingredients}" VerticalOptions="FillAndExpand" AutoSize="TextChanges" MinimumHeightRequest="70"/>
+                            </Border>
 
-                                    <Label 
+                            <Label 
                                         Text="Instructions" 
                                         Style="{StaticResource TextLabelStyle}"
                                         FontAttributes="Bold" 
                                         HorizontalOptions="Start"/>
 
-                                    <Border StrokeThickness="1" StrokeShape="RoundRectangle 5,5,5,5">
-                                        <Editor Text="{Binding NewRecipe.Instructions}" VerticalOptions="FillAndExpand" AutoSize="TextChanges" MinimumHeightRequest="70"/>
-                                    </Border>
+                            <Border StrokeThickness="1" StrokeShape="RoundRectangle 5,5,5,5">
+                                <Editor Text="{Binding NewRecipe.Instructions}" VerticalOptions="FillAndExpand" AutoSize="TextChanges" MinimumHeightRequest="70"/>
+                            </Border>
 
-                                    <Label 
+                            <Label 
                                         Text="Cook Time (minutes)" 
                                         Style="{StaticResource TextLabelStyle}"
                                         FontAttributes="Bold" 
                                         HorizontalOptions="Start"/>
 
-                                    <Border StrokeThickness="1" StrokeShape="RoundRectangle 5,5,5,5">
-                                        <editors:SfNumericEntry 
+                            <Border StrokeThickness="1" StrokeShape="RoundRectangle 5,5,5,5">
+                                <editors:SfNumericEntry 
                                             ShowBorder="False"
                                             Value="{Binding NewRecipe.CookTimeInMinutes}" 
                                             ShowClearButton="True" 
@@ -120,23 +119,22 @@
                                             BackgroundColor="{DynamicResource ContentAreaBackgroundColor}"
                                             TextColor="{DynamicResource InputTextColor}"
                                             PlaceholderColor="{DynamicResource PlaceholderTextColor}"/>
-                                    </Border>
+                            </Border>
 
-                                    <HorizontalStackLayout Spacing="10" HorizontalOptions="Center">
-                                        <Button
+                            <HorizontalStackLayout Spacing="10" HorizontalOptions="Center">
+                                <Button
                                             Command="{Binding SaveNewRecipeCommand}" 
                                             HorizontalOptions="End" 
                                             ImageSource="save_white.png"
                                             Text="Save"/>
 
-                                        <Button
+                                <Button
                                             Command="{Binding CloseCreateNewRecipeModalCommand}"
                                             HorizontalOptions="End" 
                                             Text="Cancel"/>
-                                    </HorizontalStackLayout>
-                                </VerticalStackLayout>
-                            </ScrollView>
-                    </Border>
+                            </HorizontalStackLayout>
+                        </VerticalStackLayout>
+                    </ScrollView>
                 </DataTemplate>
             </sfPopup:SfPopup.ContentTemplate>
         </sfPopup:SfPopup>
