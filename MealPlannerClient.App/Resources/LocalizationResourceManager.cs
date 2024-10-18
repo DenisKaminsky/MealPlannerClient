@@ -23,5 +23,10 @@ namespace MealPlannerClient.App.Resources
             AppResources.Culture = culture;
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(null));
         }
+
+        public CultureInfo GetCulture()
+        {
+            return AppResources.Culture;
+        }
     }
 }

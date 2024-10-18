@@ -249,4 +249,13 @@
   <data name="CancelButtonText" xml:space="preserve">
     <value>Отмена</value>
   </data>
+  <data name="RecipeDeleted" xml:space="preserve">
+    <value>Рецепт успешно удален!</value>
+  </data>
+  <data name="ErrorDeletingRecipe" xml:space="preserve">
+    <value>При удалении рецепта произошла ошибка!</value>
+  </data>
+  <data name="Minutes" xml:space="preserve">
+    <value>минут(ы)</value>
+  </data>
 </root>

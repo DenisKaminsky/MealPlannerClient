@@ -76,12 +76,13 @@ namespace MealPlannerClient.App.ViewModels
                 await Application.Current!.MainPage!.DisplayAlert("Error", "Please fill in all required fields.", "OK");
                 return;
             }
-
+            
             try
             {
                 IsMyRecipesSaving = true;
 
                 var savedRecipe = await _recipesService.SaveAsync(NewRecipe);
+                MyRecipes.Add(savedRecipe);
 
                 CloseCreateNewRecipeModal();
 
@@ -89,11 +90,63 @@ namespace MealPlannerClient.App.ViewModels
             }
             catch (Exception)
             {
-                await ShowToastMessageAsync("ErrorLoadingRecipe");
+                await ShowToastMessageAsync("ErrorSavingRecipe");
             }
             finally
             {
                 IsMyRecipesSaving = false;
+            }
+        }
+
+        [RelayCommand]
+        private async Task RemoveMyRecipeAsync(string recipeId)
+        {
+            try
+            {
+                IsMyRecipesSaving = true;
+
+                await _recipesService.DeleteAsync(recipeId);
+
+                var item = MyRecipes.First(p => p.Id == recipeId);
+                MyRecipes.Remove(item);
+
+                await ShowToastMessageAsync("RecipeDeleted");
+            }
+            catch (Exception)
+            {
+                await ShowToastMessageAsync("ErrorDeletingRecipe");
+            }
+            finally
+            {
+                IsMyRecipesSaving = false;
+            }
+        }
+
+        [RelayCommand]
+        private async Task FavoriteMyRecipeAsync(Recipe recipe)
+        {
+            try
+            {
+                await _recipesService.ToggleFavoriteAsync(recipe.Id, true);
+                recipe.IsFavorite = true;
+            }
+            catch (Exception)
+            {
+                await ShowToastMessageAsync("ErrorSavingRecipe");
+            }
+        }
+
+        [RelayCommand]
+        private async Task UnfavoriteMyRecipeAsync(Recipe recipe)
+        {
+            try
+            {
+                await _recipesService.ToggleFavoriteAsync(recipe.Id, false);
+                recipe.IsFavorite = false;
+            }
+            catch (Exception)
+            {
+                await ShowToastMessageAsync("ErrorSavingRecipe");
             }
         }
 

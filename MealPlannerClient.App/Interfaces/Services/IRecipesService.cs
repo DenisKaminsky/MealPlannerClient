@@ -6,5 +6,7 @@ namespace MealPlannerClient.App.Interfaces.Services
     {
         Task<List<Recipe>> GetAllAsync();
         Task<Recipe> SaveAsync(NewRecipe newRecipe);
+        Task DeleteAsync(string recipeId);
+        Task ToggleFavoriteAsync(string recipeId, bool isFavorite);
     }
 }

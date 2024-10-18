@@ -5,6 +5,8 @@ namespace MealPlannerClient.App.Resources
 {
     public static class AppConstants
     {
+        public static string DateFormat = "dddd dd MMMM yyyy";
+
         public static readonly FontSize FontSizeDefault = FontSize.Medium;
         public static readonly CustomTheme ThemeDefault = CustomTheme.Main;
 

@@ -124,7 +124,16 @@ namespace MealPlannerClient.App.Resources.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error occured while loading recipes!.
+        ///   Looks up a localized string similar to Error occurred while deleting recipe!.
+        /// </summary>
+        internal static string ErrorDeletingRecipe {
+            get {
+                return ResourceManager.GetString("ErrorDeletingRecipe", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error occurred while loading recipes!.
         /// </summary>
         internal static string ErrorLoadingRecipe {
             get {
@@ -133,7 +142,7 @@ namespace MealPlannerClient.App.Resources.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error occured while saving recipes!.
+        ///   Looks up a localized string similar to Error occurred while saving recipe!.
         /// </summary>
         internal static string ErrorSavingRecipe {
             get {
@@ -214,6 +223,15 @@ namespace MealPlannerClient.App.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to minute(s).
+        /// </summary>
+        internal static string Minutes {
+            get {
+                return ResourceManager.GetString("Minutes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Inventory already contains this product.
         /// </summary>
         internal static string MyProductAlreadyExists {
@@ -273,6 +291,15 @@ namespace MealPlannerClient.App.Resources.Languages {
         internal static string RecipeCookTimeMinutesLabel {
             get {
                 return ResourceManager.GetString("RecipeCookTimeMinutesLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Recipe successfully deleted!.
+        /// </summary>
+        internal static string RecipeDeleted {
+            get {
+                return ResourceManager.GetString("RecipeDeleted", resourceCulture);
             }
         }
         

@@ -26,6 +26,7 @@ namespace MealPlannerClient.App.Services
                 catch (Exception ex)
                 {
                     Debug.WriteLine(ex.Message);
+                    throw;
                 }
             }
 
@@ -47,11 +48,50 @@ namespace MealPlannerClient.App.Services
                 catch (Exception ex)
                 {
                     Debug.WriteLine(ex.Message);
+                    throw;
                 }
             }
 
             newId = await SaveToLocalStorageAsync(dto);
             return ConvertSaveNewRecipeDtoToRecipe(dto, newId, false);
+        }
+
+        public async Task DeleteAsync(string recipeId)
+        {
+            if (Connectivity.Current.NetworkAccess == NetworkAccess.Internet)
+            {
+                try
+                {
+                    await DeleteFromBackendAsync(recipeId);
+                    return;
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine(ex.Message);
+                    throw;
+                }
+            }
+
+            await DeleteFromLocalStorageAsync(recipeId);
+        }
+
+        public async Task ToggleFavoriteAsync(string recipeId, bool isFavorite)
+        {
+            if (Connectivity.Current.NetworkAccess == NetworkAccess.Internet)
+            {
+                try
+                {
+                    await ToggleFavoriteOnBackendAsync(recipeId, isFavorite);
+                    return;
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine(ex.Message);
+                    throw;
+                }
+            }
+
+            await ToggleFavoriteOnLocalStorageAsync(recipeId, isFavorite);
         }
 
         private async Task<List<Recipe>> GetAllFromBackend()
@@ -132,6 +172,33 @@ namespace MealPlannerClient.App.Services
             await Task.Delay(1000);
 
             return Guid.NewGuid().ToString();
+        }
+
+        private async Task DeleteFromBackendAsync(string recipeId)
+        {
+            await _myRecipesWebService.DeleteAsync(recipeId);
+        }
+
+        private async Task DeleteFromLocalStorageAsync(string recipeId)
+        {
+            await Task.Delay(1000);
+        }
+
+        private async Task ToggleFavoriteOnBackendAsync(string recipeId, bool isFavorite)
+        {
+            if (isFavorite)
+            {
+                await _myRecipesWebService.FavoriteAsync(recipeId);
+            }
+            else
+            {
+                await _myRecipesWebService.UnfavoriteAsync(recipeId);
+            }
+        }
+
+        private async Task ToggleFavoriteOnLocalStorageAsync(string recipeId, bool isFavorite)
+        {
+            await Task.Delay(100);
         }
 
         private SaveNewRecipeDTO ConvertNewRecipeToSaveNewRecipeDto(NewRecipe newRecipe)

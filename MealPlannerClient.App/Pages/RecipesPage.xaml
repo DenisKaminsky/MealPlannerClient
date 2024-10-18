@@ -17,6 +17,8 @@
         <converters:PercentageConverter x:Key="PercentageConverter" />
         <converters:AllTrueMultiConverter x:Key="AllTrueConverter" />
         <converters:InverseBooleanConverter x:Key="InverseBooleanConverter" />
+        <converters:DateTimeToLocalDateStringConverter x:Key="DateTimeToLocalDateStringConverter" />
+        <converters:IndexToNumberedListNumberConverter x:Key="IndexToNumberedListNumberConverter" />
     </ContentPage.Resources>
 
     <Grid RowDefinitions="Auto,*" ColumnDefinitions="*">
@@ -117,7 +119,176 @@
                 </MultiBinding>
             </ScrollView.IsVisible>
 
-            <Label Text="Page 2 Content" FontSize="11" />
+            <CollectionView
+                HorizontalOptions="Start"
+                SelectionMode="None" 
+                ItemsSource="{Binding MyRecipes}">
+
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical" ItemSpacing="10"/>
+                </CollectionView.ItemsLayout>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:Recipe">
+                        <Border StrokeThickness="2" StrokeShape="RoundRectangle 5,5,5,5" Padding="7" HeightRequest="450">
+                            <Grid RowDefinitions="Auto,Auto,*,Auto" ColumnDefinitions="*,*,*">
+
+                                <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"
+                                       HorizontalOptions="Center"
+                                       HorizontalTextAlignment="Center"
+                                       WidthRequest="300"
+                                       Text="{Binding Name}"/>
+
+
+
+                                <HorizontalStackLayout Grid.Row="0" Grid.Column="2" Spacing="15" HorizontalOptions="End" Margin="0,0,0,7">
+                                    <Button
+                                        HeightRequest="50"
+                                        WidthRequest="50"
+                                        ImageSource="star_fill.png"
+                                        IsVisible="{Binding IsFavorite}"
+                                        CommandParameter="{Binding .}"
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:RecipesPageViewModel}}, Path=UnfavoriteMyRecipeCommand}">
+                                    </Button>
+
+                                    <Button
+                                        HeightRequest="50"
+                                        WidthRequest="50"
+                                        ImageSource="star.png"
+                                        IsVisible="{Binding IsFavorite, Converter={StaticResource InverseBooleanConverter}}"
+                                        CommandParameter="{Binding .}"
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:RecipesPageViewModel}}, Path=FavoriteMyRecipeCommand}">
+                                    </Button>
+
+                                    <Button
+                                        HeightRequest="50"
+                                        WidthRequest="50"
+                                        Style="{StaticResource DeleteButtonStyle}"
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:RecipesPageViewModel}}, Path=RemoveMyRecipeCommand}"
+                                        CommandParameter="{Binding Id}"/>
+                                </HorizontalStackLayout>
+
+
+
+                                <!-- Grid Headers -->
+                                <Label Grid.Row="1" Grid.Column="0"
+                                    HorizontalTextAlignment="Center"
+                                    TextColor="{DynamicResource HelpTextColor}"
+                                    Text="{markupExtensions:TranslateBinding Name=RecipeIngredientsLabel}"/>
+
+                                <Label Grid.Row="1" Grid.Column="1"
+                                    HorizontalTextAlignment="Center"
+                                    TextColor="{DynamicResource HelpTextColor}"
+                                    Text="{markupExtensions:TranslateBinding Name=RecipePreparationStepsLabel}"/>
+
+                                <Label Grid.Row="1" Grid.Column="2"
+                                    HorizontalTextAlignment="Center"
+                                    TextColor="{DynamicResource HelpTextColor}"
+                                    Text="{markupExtensions:TranslateBinding Name=RecipeInstructionsLabel}"/>
+
+
+                                <!-- Ingredients column -->
+                                <ScrollView Grid.Row="2" Grid.Column="0"
+                                    Padding="7">
+                                    <CollectionView ItemsSource="{Binding Ingredients}">
+                                        <CollectionView.ItemsLayout>
+                                            <LinearItemsLayout Orientation="Vertical" ItemSpacing="5"/>
+                                        </CollectionView.ItemsLayout>
+                                        <CollectionView.ItemTemplate>
+                                            <DataTemplate>
+                                                <Grid RowDefinitions="Auto" ColumnDefinitions="Auto,*">
+                                                    <Label Grid.Row="0" Grid.Column="0" Text="•" Margin="0,0,10,0"/>
+                                                    <Label Grid.Row="0" Grid.Column="1" Text="{Binding .}" LineBreakMode="WordWrap"/>
+                                                </Grid>
+                                            </DataTemplate>
+                                        </CollectionView.ItemTemplate>
+                                    </CollectionView>
+                                </ScrollView>
+
+                                <BoxView Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" WidthRequest="3" Color="{DynamicResource MenuDelimiterColor}" HorizontalOptions="End"/>
+
+                                <!-- Preparation Steps column -->
+                                <ScrollView Grid.Row="2" Grid.Column="1"
+                                    Padding="7">
+                                    <CollectionView ItemsSource="{Binding PreparationSteps}">
+                                        <CollectionView.ItemsLayout>
+                                            <LinearItemsLayout Orientation="Vertical" ItemSpacing="5"/>
+                                        </CollectionView.ItemsLayout>
+                                        <CollectionView.ItemTemplate>
+                                            <DataTemplate>
+                                                <Grid RowDefinitions="Auto" ColumnDefinitions="Auto,*">
+                                                    <Label Grid.Row="0" Grid.Column="0" Text="•" Margin="0,0,10,0"/>
+                                                    <Label Grid.Row="0" Grid.Column="1" Text="{Binding .}" LineBreakMode="WordWrap"/>
+                                                </Grid>
+                                            </DataTemplate>
+                                        </CollectionView.ItemTemplate>
+                                    </CollectionView>
+                                </ScrollView>
+
+                                <BoxView Grid.Row="1" Grid.RowSpan="2" Grid.Column="1" WidthRequest="3" Color="{DynamicResource MenuDelimiterColor}" HorizontalOptions="End"/>
+
+                                <!-- Instructions column -->
+                                <ScrollView Grid.Row="2" Grid.Column="2"
+                                    Padding="7">
+                                    <CollectionView ItemsSource="{Binding Instructions}">
+                                        <CollectionView.ItemsLayout>
+                                            <LinearItemsLayout Orientation="Vertical" ItemSpacing="5"/>
+                                        </CollectionView.ItemsLayout>
+                                        <CollectionView.ItemTemplate>
+                                            <DataTemplate>
+                                                <Grid RowDefinitions="Auto" ColumnDefinitions="Auto,*">
+                                                    <Label Grid.Row="0" Grid.Column="0" Text="•" Margin="0,0,10,0"/>
+                                                    <Label Grid.Row="0" Grid.Column="1" Text="{Binding .}" LineBreakMode="WordWrap"/>
+                                                </Grid>
+                                            </DataTemplate>
+                                        </CollectionView.ItemTemplate>
+                                    </CollectionView>
+                                </ScrollView>
+
+
+
+
+                                <BoxView Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" HeightRequest="3" Color="{DynamicResource MenuDelimiterColor}" VerticalOptions="Start"/>
+
+                                <Border Grid.Row="3" Grid.Column="0" 
+                                        Margin="0,9,0,0" 
+                                        Padding="7"
+                                        StrokeShape="RoundRectangle 5,5,5,5"
+                                        HorizontalOptions="Start"
+                                        BackgroundColor="{DynamicResource ButtonColor}">
+                                    <HorizontalStackLayout Spacing="5">
+                                        <Image
+                                            Source="timer.png"
+                                            WidthRequest="30"
+                                            HeightRequest="30"
+                                            />
+
+                                        <Label 
+                                            VerticalTextAlignment="Center"
+                                            HorizontalTextAlignment="Center"
+                                            Style="{StaticResource HelpTextLabelStyle}"
+                                            Text="{Binding CookTimeInMinutes}"
+                                            TextColor="{DynamicResource ButtonTextColor}"/>
+
+                                        <Label 
+                                            VerticalTextAlignment="Center"
+                                            HorizontalTextAlignment="Center"
+                                            Style="{StaticResource HelpTextLabelStyle}"
+                                            Text="{markupExtensions:TranslateBinding Name=Minutes}"
+                                            TextColor="{DynamicResource ButtonTextColor}"/>
+                                    </HorizontalStackLayout>
+                                </Border>
+
+                                <HorizontalStackLayout Grid.Row="3" Grid.Column="2" HorizontalOptions="End" VerticalOptions="Center">
+                                    <Label 
+                                        Style="{StaticResource HelpTextLabelStyle}"
+                                        Text="{Binding CreatedDateUtc, Converter={StaticResource DateTimeToLocalDateStringConverter}}"/>
+                                </HorizontalStackLayout>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
 
         </ScrollView>
 

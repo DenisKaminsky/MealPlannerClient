@@ -105,6 +105,9 @@
 	  <None Remove="Resources\Images\save_white.png" />
 	  <None Remove="Resources\Images\settings_black.png" />
 	  <None Remove="Resources\Images\settings_white.png" />
+	  <None Remove="Resources\Images\star.png" />
+	  <None Remove="Resources\Images\star_fill.png" />
+	  <None Remove="Resources\Images\timer.png" />
 	  <None Remove="Resources\Images\usa.png" />
 	</ItemGroup>
 
