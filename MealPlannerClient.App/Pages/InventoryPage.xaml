@@ -5,7 +5,7 @@
              xmlns:viewModels="clr-namespace:MealPlannerClient.App.ViewModels"
              xmlns:models="clr-namespace:MealPlannerClient.App.Models"
              xmlns:converters="clr-namespace:MealPlannerClient.App.Converters"
-             xmlns:behaviors="using:MealPlannerClient.App.Behaviors"
+             xmlns:behaviors="clr-namespace:MealPlannerClient.App.Behaviors"
              x:Class="MealPlannerClient.App.Pages.InventoryPage"
              x:DataType="viewModels:InventoryPageViewModel"
              Shell.NavBarIsVisible="False"

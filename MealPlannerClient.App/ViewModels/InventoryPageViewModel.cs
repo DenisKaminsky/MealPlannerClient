@@ -36,7 +36,7 @@ namespace MealPlannerClient.App.ViewModels
         [ObservableProperty]
         private bool _isAvailableProductsLoaded = false;
         
-        private string _availableProductsSearchString = String.Empty;
+        private string _availableProductsSearchString = string.Empty;
 
         [ObservableProperty]
         private int _availableProductsPageNumber = 0;

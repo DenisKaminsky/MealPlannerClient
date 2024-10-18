@@ -61,6 +61,15 @@ namespace MealPlannerClient.App.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add Recipe.
+        /// </summary>
+        internal static string AddRecipe {
+            get {
+                return ResourceManager.GetString("AddRecipe", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Products were not found.
         /// </summary>
         internal static string AvailableProductsEmpty {
@@ -88,11 +97,47 @@ namespace MealPlannerClient.App.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        internal static string CancelButtonText {
+            get {
+                return ResourceManager.GetString("CancelButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create New Recipe.
+        /// </summary>
+        internal static string CreateNewRecipeHeader {
+            get {
+                return ResourceManager.GetString("CreateNewRecipeHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Enter a number.
         /// </summary>
         internal static string EnterNumber {
             get {
                 return ResourceManager.GetString("EnterNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error occured while loading recipes!.
+        /// </summary>
+        internal static string ErrorLoadingRecipe {
+            get {
+                return ResourceManager.GetString("ErrorLoadingRecipe", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error occured while saving recipes!.
+        /// </summary>
+        internal static string ErrorSavingRecipe {
+            get {
+                return ResourceManager.GetString("ErrorSavingRecipe", resourceCulture);
             }
         }
         
@@ -196,6 +241,15 @@ namespace MealPlannerClient.App.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to My Recipes.
+        /// </summary>
+        internal static string MyRecipesText {
+            get {
+                return ResourceManager.GetString("MyRecipesText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Page.
         /// </summary>
         internal static string PagerPage {
@@ -210,6 +264,87 @@ namespace MealPlannerClient.App.Resources.Languages {
         internal static string PagerPageOf {
             get {
                 return ResourceManager.GetString("PagerPageOf", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cook Time (minutes).
+        /// </summary>
+        internal static string RecipeCookTimeMinutesLabel {
+            get {
+                return ResourceManager.GetString("RecipeCookTimeMinutesLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ingredients.
+        /// </summary>
+        internal static string RecipeIngredientsLabel {
+            get {
+                return ResourceManager.GetString("RecipeIngredientsLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Instructions.
+        /// </summary>
+        internal static string RecipeInstructionsLabel {
+            get {
+                return ResourceManager.GetString("RecipeInstructionsLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        internal static string RecipeNameLabel {
+            get {
+                return ResourceManager.GetString("RecipeNameLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Preparation Steps.
+        /// </summary>
+        internal static string RecipePreparationStepsLabel {
+            get {
+                return ResourceManager.GetString("RecipePreparationStepsLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Recipe successfully saved!.
+        /// </summary>
+        internal static string RecipeSaved {
+            get {
+                return ResourceManager.GetString("RecipeSaved", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You didn&apos;t save any recipes yet.
+        /// </summary>
+        internal static string RecipesEmpty {
+            get {
+                return ResourceManager.GetString("RecipesEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Recipes are loading....
+        /// </summary>
+        internal static string RecipesLoading {
+            get {
+                return ResourceManager.GetString("RecipesLoading", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Recipes are saving....
+        /// </summary>
+        internal static string RecipesSaving {
+            get {
+                return ResourceManager.GetString("RecipesSaving", resourceCulture);
             }
         }
         

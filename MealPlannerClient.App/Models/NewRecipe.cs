@@ -7,6 +7,5 @@
         public string Ingredients { get; set; } 
         public string Instructions { get; set; }
         public int CookTimeInMinutes { get; set; }
-        public DateTime DateCreated { get; set; }
     }
 }

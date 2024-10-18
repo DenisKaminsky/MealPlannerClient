@@ -204,4 +204,49 @@
   <data name="Unit" xml:space="preserve">
     <value>item(s)</value>
   </data>
+  <data name="ErrorLoadingRecipe" xml:space="preserve">
+    <value>Error occured while loading recipes!</value>
+  </data>
+  <data name="ErrorSavingRecipe" xml:space="preserve">
+    <value>Error occured while saving recipes!</value>
+  </data>
+  <data name="RecipeSaved" xml:space="preserve">
+    <value>Recipe successfully saved!</value>
+  </data>
+  <data name="RecipesLoading" xml:space="preserve">
+    <value>Recipes are loading...</value>
+  </data>
+  <data name="RecipesSaving" xml:space="preserve">
+    <value>Recipes are saving...</value>
+  </data>
+  <data name="AddRecipe" xml:space="preserve">
+    <value>Add Recipe</value>
+  </data>
+  <data name="MyRecipesText" xml:space="preserve">
+    <value>My Recipes</value>
+  </data>
+  <data name="RecipesEmpty" xml:space="preserve">
+    <value>You didn't save any recipes yet</value>
+  </data>
+  <data name="CreateNewRecipeHeader" xml:space="preserve">
+    <value>Create New Recipe</value>
+  </data>
+  <data name="RecipeNameLabel" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="RecipePreparationStepsLabel" xml:space="preserve">
+    <value>Preparation Steps</value>
+  </data>
+  <data name="RecipeIngredientsLabel" xml:space="preserve">
+    <value>Ingredients</value>
+  </data>
+  <data name="RecipeInstructionsLabel" xml:space="preserve">
+    <value>Instructions</value>
+  </data>
+  <data name="RecipeCookTimeMinutesLabel" xml:space="preserve">
+    <value>Cook Time (minutes)</value>
+  </data>
+  <data name="CancelButtonText" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
 </root>

@@ -30,7 +30,8 @@ namespace MealPlannerClient.App
 
             builder.Services.AddTransient<IMyProductsService, MyProductsService>();
             builder.Services.AddTransient<IProductsService, ProductsService>();
-            
+            builder.Services.AddTransient<IRecipesService, RecipesService>();
+
             builder.Services.AddSingleton<IProductsWebService, ProductsWebService>();
             builder.Services.AddSingleton<IMyProductsWebService, MyProductsWebService>();
 
