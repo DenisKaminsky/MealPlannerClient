@@ -34,7 +34,7 @@
                     <StackLayout Grid.Row="2" Grid.Column="0" VerticalOptions="Start" Padding="10" Spacing="20">
                         <Button
                             Style="{StaticResource SideMenuButtonStyle}"
-                            Text="{markupExtensions:TranslateBinding SideMenu_Inventory}"
+                            Text="{markupExtensions:TranslateBinding Name=SideMenu_Inventory}"
                             Command="{Binding NavigationItemClickedCommand, Source={x:Static app:App.MainViewModel}}" 
                             CommandParameter="inventory"
                             ImageSource="box_white.png"
@@ -42,10 +42,17 @@
 
                         <Button
                             Style="{StaticResource SideMenuButtonStyle}"
-                            Text="{markupExtensions:TranslateBinding SideMenu_Recipes}"
+                            Text="{markupExtensions:TranslateBinding Name=SideMenu_Recipes}"
                             ImageSource="recipe_white.png"
                             Command="{Binding NavigationItemClickedCommand, Source={x:Static app:App.MainViewModel}}" 
                             CommandParameter="recipes"/>
+
+                        <Button
+                            Style="{StaticResource SideMenuButtonStyle}"
+                            Text="{markupExtensions:TranslateBinding Name=SideMenu_Copilot}"
+                            ImageSource="artificial_intelligence_white.png"
+                            Command="{Binding NavigationItemClickedCommand, Source={x:Static app:App.MainViewModel}}" 
+                            CommandParameter="copilot"/>
                     </StackLayout>
 
 
@@ -62,7 +69,7 @@
                     <StackLayout Grid.Row="3" Grid.Column="0" VerticalOptions="Center" Padding="10">
                         <Button 
                             Style="{StaticResource SideMenuButtonStyle}"
-                            Text="{markupExtensions:TranslateBinding SideMenu_Settings}"
+                            Text="{markupExtensions:TranslateBinding Name=SideMenu_Settings}"
                             Command="{Binding NavigationItemClickedCommand, Source={x:Static app:App.MainViewModel}}" 
                             CommandParameter="settings" 
                             ImageSource="settings_white.png"/>

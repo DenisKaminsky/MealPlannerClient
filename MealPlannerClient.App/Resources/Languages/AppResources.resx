@@ -258,4 +258,7 @@
   <data name="Minutes" xml:space="preserve">
     <value>minute(s)</value>
   </data>
+  <data name="SideMenu_Copilot" xml:space="preserve">
+    <value>AI Copilot</value>
+  </data>
 </root>

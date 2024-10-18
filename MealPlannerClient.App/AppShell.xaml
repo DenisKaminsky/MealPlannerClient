@@ -9,19 +9,25 @@
     IconImageSource="logo.svg">
 
     <ShellContent
-         Title="{markupExtensions:TranslateBinding SideMenu_Inventory}"
+         Title="{markupExtensions:TranslateBinding Name=SideMenu_Inventory}"
          Icon="box_black.png"
          ContentTemplate="{DataTemplate pages:InventoryPage}"
          Route="inventory" />
 
     <ShellContent
-        Title="{markupExtensions:TranslateBinding SideMenu_Recipes}"
+        Title="{markupExtensions:TranslateBinding Name=SideMenu_Recipes}"
         Icon="recipe_black.png"
         ContentTemplate="{DataTemplate pages:RecipesPage}"
         Route="recipes" />
 
     <ShellContent
-        Title="{markupExtensions:TranslateBinding SideMenu_Settings}"
+        Title="{markupExtensions:TranslateBinding Name=SideMenu_Copilot}"
+        Icon="artificial_intelligence_black.png"
+        ContentTemplate="{DataTemplate pages:CopilotPage}"
+        Route="copilot" />
+
+    <ShellContent
+        Title="{markupExtensions:TranslateBinding Name=SideMenu_Settings}"
         Icon="settings_black.png"
         ContentTemplate="{DataTemplate pages:SettingsPage}"
         Route="settings" />

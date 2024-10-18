@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:markupExtensions="clr-namespace:MealPlannerClient.App.MarkupExtensions"
+             xmlns:viewModels="clr-namespace:MealPlannerClient.App.ViewModels"
+             xmlns:models="clr-namespace:MealPlannerClient.App.Models"
+             xmlns:converters="clr-namespace:MealPlannerClient.App.Converters"
+             xmlns:behaviors="clr-namespace:MealPlannerClient.App.Behaviors"
+             x:Class="MealPlannerClient.App.Pages.CopilotPage"
+             x:DataType="viewModels:InventoryPageViewModel"
+             Shell.NavBarIsVisible="False"
+             Title="{markupExtensions:TranslateBinding Name=SideMenu_Copilot}"
+             ControlTemplate="{StaticResource MainLayoutTemplate}">
+    <VerticalStackLayout>
+        <Label 
+            Text="Welcome to .NET MAUI!"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+    </VerticalStackLayout>
+</ContentPage>
+    
+    
+    

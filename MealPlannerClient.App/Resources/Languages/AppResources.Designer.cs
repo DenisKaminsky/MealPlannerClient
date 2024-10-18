@@ -448,6 +448,15 @@ namespace MealPlannerClient.App.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to AI Copilot.
+        /// </summary>
+        internal static string SideMenu_Copilot {
+            get {
+                return ResourceManager.GetString("SideMenu_Copilot", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Inventory.
         /// </summary>
         internal static string SideMenu_Inventory {

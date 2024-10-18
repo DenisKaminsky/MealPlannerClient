@@ -91,6 +91,8 @@
 	<ItemGroup>
 	  <None Remove="appsettings.json" />
 	  <None Remove="Resources\Images\add.png" />
+	  <None Remove="Resources\Images\artificial_intelligence_black.png" />
+	  <None Remove="Resources\Images\artificial_intelligence_white.png" />
 	  <None Remove="Resources\Images\box_black.png" />
 	  <None Remove="Resources\Images\box_white.png" />
 	  <None Remove="Resources\Images\delete_white.png" />
@@ -164,6 +166,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="Pages\CopilotPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Pages\SettingsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
