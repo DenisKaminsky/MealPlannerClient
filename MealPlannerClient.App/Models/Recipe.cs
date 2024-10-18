@@ -9,6 +9,6 @@
         public IEnumerable<string> Ingredients { get; set; }
         public IEnumerable<string> Instructions { get; set; }
         public int CookTimeInMinutes { get; set; }
-        public DateTime DateCreatedUtc { get; set; }
+        public DateTime CreatedDateUtc { get; set; }
     }
 }

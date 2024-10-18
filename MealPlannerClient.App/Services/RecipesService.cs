@@ -2,11 +2,19 @@
 using MealPlannerClient.App.Models;
 using System.Diagnostics;
 using MealPlannerClient.App.Interfaces.Services;
+using MealPlannerClient.App.Interfaces.Web;
 
 namespace MealPlannerClient.App.Services
 {
     public class RecipesService: IRecipesService
     {
+        private readonly IMyRecipesWebService _myRecipesWebService;
+
+        public RecipesService(IMyRecipesWebService myRecipesWebService)
+        {
+            _myRecipesWebService = myRecipesWebService;
+        }
+
         public async Task<List<Recipe>> GetAllAsync()
         {
             if (Connectivity.Current.NetworkAccess == NetworkAccess.Internet)
@@ -48,9 +56,7 @@ namespace MealPlannerClient.App.Services
 
         private async Task<List<Recipe>> GetAllFromBackend()
         {
-            await Task.Delay(5000);
-
-            throw new NotImplementedException();
+            return await _myRecipesWebService.GetAllAsync();
         }
 
         private async Task<List<Recipe>> GetAllFromLocalStorage()
@@ -65,7 +71,7 @@ namespace MealPlannerClient.App.Services
                     Name = "Caesar Salad",
                     CookTimeInMinutes = 15,
                     IsFavorite = true,
-                    DateCreatedUtc = DateTime.UtcNow,
+                    CreatedDateUtc = DateTime.UtcNow,
                     Ingredients = new []
                     {
                         "Chicken breast (x1)",
@@ -91,7 +97,7 @@ namespace MealPlannerClient.App.Services
                     Name = "Greek Salad",
                     CookTimeInMinutes = 15,
                     IsFavorite = false,
-                    DateCreatedUtc = DateTime.UtcNow,
+                    CreatedDateUtc = DateTime.UtcNow,
                     Ingredients = new []
                     {
                         "Chicken breast (x1)",
@@ -118,9 +124,7 @@ namespace MealPlannerClient.App.Services
 
         private async Task<string> SaveToBackendAsync(SaveNewRecipeDTO newRecipe)
         {
-            await Task.Delay(2000);
-
-            return Guid.NewGuid().ToString();
+            return await _myRecipesWebService.SaveAsync(newRecipe);
         }
 
         private async Task<string> SaveToLocalStorageAsync(SaveNewRecipeDTO newRecipe)
@@ -136,7 +140,7 @@ namespace MealPlannerClient.App.Services
             {
                 Name = newRecipe.Name,
                 CookTimeInMinutes = newRecipe.CookTimeInMinutes,
-                DateCreatedUtc = DateTime.UtcNow,
+                CreatedDateUtc = DateTime.UtcNow,
                 PreparationSteps = ConvertTextToArrayOfRows(newRecipe.PreparationSteps),
                 Ingredients = ConvertTextToArrayOfRows(newRecipe.Ingredients),
                 Instructions = ConvertTextToArrayOfRows(newRecipe.Instructions)
@@ -151,7 +155,7 @@ namespace MealPlannerClient.App.Services
                 Name = dto.Name,
                 IsFavorite = isFavorite,
                 CookTimeInMinutes = dto.CookTimeInMinutes,
-                DateCreatedUtc = dto.DateCreatedUtc,
+                CreatedDateUtc = dto.CreatedDateUtc,
                 PreparationSteps = dto.PreparationSteps,
                 Ingredients = dto.PreparationSteps,
                 Instructions = dto.Instructions

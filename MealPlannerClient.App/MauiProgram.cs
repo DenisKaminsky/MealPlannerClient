@@ -34,6 +34,7 @@ namespace MealPlannerClient.App
 
             builder.Services.AddSingleton<IProductsWebService, ProductsWebService>();
             builder.Services.AddSingleton<IMyProductsWebService, MyProductsWebService>();
+            builder.Services.AddSingleton<IMyRecipesWebService, MyRecipesWebService>();
 
             builder.Services.AddTransient<SettingsPageViewModel>();
             builder.Services.AddTransient<SettingsPage>();
