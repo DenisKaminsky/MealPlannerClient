@@ -31,10 +31,12 @@ namespace MealPlannerClient.App
             builder.Services.AddTransient<IMyProductsService, MyProductsService>();
             builder.Services.AddTransient<IProductsService, ProductsService>();
             builder.Services.AddTransient<IRecipesService, RecipesService>();
+            builder.Services.AddTransient<ICopilotService, CopilotService>();
 
             builder.Services.AddSingleton<IProductsWebService, ProductsWebService>();
             builder.Services.AddSingleton<IMyProductsWebService, MyProductsWebService>();
             builder.Services.AddSingleton<IMyRecipesWebService, MyRecipesWebService>();
+            builder.Services.AddSingleton<ICopilotWebService, CopilotWebService>();
 
             builder.Services.AddTransient<SettingsPageViewModel>();
             builder.Services.AddTransient<SettingsPage>();
@@ -47,6 +49,9 @@ namespace MealPlannerClient.App
 
             builder.Services.AddTransient<RecipesPageViewModel>();
             builder.Services.AddTransient<RecipesPage>();
+
+            builder.Services.AddTransient<CopilotPageViewModel>();
+            builder.Services.AddTransient<CopilotPage>();
 
             builder.Services.AddSingleton(_ => new BackendHttpClient
             {

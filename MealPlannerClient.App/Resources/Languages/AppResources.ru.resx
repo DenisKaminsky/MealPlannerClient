@@ -261,4 +261,7 @@
   <data name="SideMenu_Copilot" xml:space="preserve">
     <value>AI Помощник</value>
   </data>
+  <data name="SuggestRecipes" xml:space="preserve">
+    <value>Предложить рецепты</value>
+  </data>
 </root>

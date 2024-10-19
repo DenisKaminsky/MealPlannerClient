@@ -484,6 +484,15 @@ namespace MealPlannerClient.App.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Suggest Recipes.
+        /// </summary>
+        internal static string SuggestRecipes {
+            get {
+                return ResourceManager.GetString("SuggestRecipes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to item(s).
         /// </summary>
         internal static string Unit {
